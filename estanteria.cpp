@@ -28,6 +28,10 @@ class Estanteria {
         return cantidad;
     }
 
+    unsigned int quitar_items(Producte* prod, unsigned int cantidad) {
+    }
+
+
     Producte* consultar_pos(const unsigned int& f, const unsigned int& c) const {
         return estant.at(f*columnes + c);
     }

@@ -15,6 +15,7 @@ class Sala {
     unsigned int consulta_id();
 
     unsigned int poner_items(Producte* prod, const unsigned int& cantidad);
+    unsigned int quitar_items(Producte* prod, const unsigned int& cantidad);
 
     void compactar();
     void reorganizar();

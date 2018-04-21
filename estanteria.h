@@ -19,6 +19,7 @@ class Estanteria {
     Estanteria(const unsigned int& files, const unsigned int& columnes);
 
     unsigned int poner_items(Producte* prod, unsigned int cantidad);
+    unsigned int quitar_items(Producte* prod, unsigned int cantidad);
 
     Producte* consultar_pos(const unsigned int& f, const unsigned int& c) const;
 

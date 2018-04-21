@@ -17,6 +17,10 @@ class Sala {
         return estant.poner_items(prod, cantidad);
     }
 
+    unsigned int quitar_items(Producte* prod, const unsigned int& cantidad) {
+        return estant.quitar_items(prod, cantidad);
+    }
+
     void compactar() {
         estant.compactar();
     }
