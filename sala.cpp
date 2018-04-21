@@ -1,52 +1,41 @@
-#include "estanteria.h"
+#include "sala.h"
 
-class Sala {
-    unsigned int id;
+unsigned int Sala::consulta_id() {
+    return id;
+}
 
-    Estanteria estant;
-    Sala *dreta, *esquerra;
-    //Sala *pare;
+Sala* Sala::fill_dre() {
+    return dreta;
+}
 
-    public:
+Sala* Sala::fill_esq() {
+    return esquerra;
+}
 
-    unsigned int consulta_id() {
-        return id;
-    }
+unsigned int Sala::poner_items(Producte* prod, const unsigned int& cantidad) {
+    return estant.poner_items(prod, cantidad);
+}
 
-    Sala* fill_dre() {
-        return dreta;
-    }
+unsigned int Sala::quitar_items(Producte* prod, const unsigned int& cantidad) {
+    return estant.quitar_items(prod, cantidad);
+}
 
-    Sala* fill_esq() {
-        return esquerra;
-    }
+void Sala::compactar() {
+    estant.compactar();
+}
 
-    unsigned int poner_items(Producte* prod, const unsigned int& cantidad) {
-        return estant.poner_items(prod, cantidad);
-    }
+void Sala::reorganizar() {
+    estant.reorganizar();
+}
 
-    unsigned int quitar_items(Producte* prod, const unsigned int& cantidad) {
-        return estant.quitar_items(prod, cantidad);
-    }
+void Sala::redimensionar(const unsigned int& f, const unsigned int& c) {
+    estant.redimensionar(f, c);
+}
 
-    void compactar() {
-        estant.compactar();
-    }
+void Sala::escribir() {
+    estant.escribir();
+}
 
-    void reorganizar() {
-        estant.reorganizar();
-    }
-
-    void redimensionar(const unsigned int& f, const unsigned int& c) {
-        estant.redimensionar(f, c);
-    }
-
-    void escribir() {
-        estant.escribir();
-    }
-
-    Producte* consultar_pos(const unsigned int& f, const unsigned int& c) const {
-        return estant.consultar_pos(f, c);
-    }
-
-};
+Producte* Sala::consultar_pos(const unsigned int& f, const unsigned int& c) const {
+    return estant.consultar_pos(f, c);
+}

@@ -15,6 +15,8 @@ class Magatzem {
     std::map<std::string, std::list<Producte>::iterator> prod_map;
     std::vector<Sala*> sala_map;
 
+    Producte* str_to_prod(const std::string& prod_id);
+
     public:
 
     void inicialitza();
@@ -31,7 +33,7 @@ class Magatzem {
     void reorganizar(const unsigned int& sala_id);
     void redimensionar(const unsigned int& sala_id, const unsigned int& f, const unsigned int& c);
 
-    void inventario() const;
+    void inventario();
     void escribir(const unsigned int& sala_id) const;
 
     Producte* consultar_pos(const unsigned int& sala_id, const unsigned int& f, const unsigned int& c) const;

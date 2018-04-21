@@ -1,75 +1,65 @@
-#include "producte.h"
+#include "estanteria.h"
 
-#include<vector>
 #include<algorithm>
+#include<vector>
 using namespace std;
 
-class Estanteria {
-    vector<Producte*> estant;
-    unsigned int files, columnes;
+Estanteria::Estanteria(): files(0), columnes(0) {}
+Estanteria::Estanteria(const unsigned int& files, const unsigned int& columnes):
+    estant(vector<Producte*>(files*columnes, NULL)), files(files), columnes(columnes),
+    last_pos(0), elements(0) {}
 
-    unsigned int last_pos, elements;
-
-    public:
-
-    Estanteria(): files(0), columnes(0) {}
-    Estanteria(const unsigned int& files, const unsigned int& columnes):
-        estant(vector<Producte*>(files*columnes, NULL)), files(files), columnes(columnes),
-        last_pos(0), elements(0) {}
-
-    unsigned int poner_items(Producte* prod, unsigned int cantidad) {
+    unsigned int Estanteria::poner_items(Producte* prod, unsigned int cantidad) {
         for (unsigned int i = 0; i < files*columnes and cantidad; ++i)
             if (estant[i] == NULL)
                 --cantidad, estant[i] = prod, prod->afegir(),
-                ++last_pos, last_pos = std::max(last_pos, i),
-                ++elements;
+                    ++last_pos, last_pos = std::max(last_pos, i),
+                    ++elements;
         return cantidad;
     }
 
-    unsigned int quitar_items(Producte* prod, unsigned int cantidad) {
-        for (unsigned int i = 0; i <= last_pos and cantidad; ++i) 
-            if (estant[i] == prod)
-                estant[i] = NULL, --cantidad, --elements;
-        // last_pos ?
-        return cantidad;
-    }
+unsigned int Estanteria::quitar_items(Producte* prod, unsigned int cantidad) {
+    for (unsigned int i = 0; i <= last_pos and cantidad; ++i) 
+        if (estant[i] == prod)
+            estant[i] = NULL, --cantidad, --elements;
+    // last_pos ?
+    return cantidad;
+}
 
 
-    Producte* consultar_pos(const unsigned int& f, const unsigned int& c) const {
-        return estant.at(f*columnes + c);
-    }
+Producte* Estanteria::consultar_pos(const unsigned int& f, const unsigned int& c) const {
+    return estant.at(f*columnes + c);
+}
 
-    void compactar() {
-        //stable_sort(estant.begin(), estant.end(),
-        stable_sort(estant.begin(), estant.begin()+last_pos,
+void Estanteria::compactar() {
+    //stable_sort(estant.begin(), estant.end(),
+    stable_sort(estant.begin(), estant.begin()+last_pos,
             [](Producte* a, Producte* b)  -> bool  {
-                if (b == NULL) return true;
-                else if (a == NULL) return false;
-                return true;
+            if (b == NULL) return true;
+            else if (a == NULL) return false;
+            return true;
             }
-        );
-    }
+            );
+}
 
-    void reorganizar() {
-        //sort(estant.begin(), estant.end(),
-        sort(estant.begin(), estant.begin()+last_pos,
+void Estanteria::reorganizar() {
+    //sort(estant.begin(), estant.end(),
+    sort(estant.begin(), estant.begin()+last_pos,
             [](Producte* a, Producte* b) {
-                if (b == NULL) return true;
-                else if (a == NULL) return false;
-                return a->consulta_id() < b->consulta_id();
+            if (b == NULL) return true;
+            else if (a == NULL) return false;
+            return a->consulta_id() < b->consulta_id();
             }
         );
-    }
+}
 
-    void redimensionar(const unsigned int& f, const unsigned int& c) {
-        if (f*c < elements) throw "too small";
-        compactar();
-        files = f, columnes = c, last_pos = elements;
-        estant.resize(files*columnes);
-    }
+void Estanteria::redimensionar(const unsigned int& f, const unsigned int& c) {
+    if (f*c < elements) throw "too small";
+    compactar();
+    files = f, columnes = c, last_pos = elements;
+    estant.resize(files*columnes);
+}
 
-    void escribir() {
+void Estanteria::escribir() {
 
-    }
-
-};
+}

@@ -1,7 +1,7 @@
 #ifndef PRODUCTE_H
 #define PRODUCTE_H
 
-#include <iostream>
+#include<string>
 
 class Producte {
     std::string id;
