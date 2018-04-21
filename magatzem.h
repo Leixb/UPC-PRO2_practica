@@ -8,14 +8,16 @@
 #include <vector>
 
 class Magatzem {
+    int n_sales;
     Sala *root;
-
-    std::list<Producte> productes;
-
-    std::map<std::string, std::list<Producte>::iterator> prod_map;
     std::vector<Sala*> sala_map;
 
+    std::list<Producte> productes;
+    std::map<std::string, std::list<Producte>::iterator> prod_map;
+
     Producte* str_to_prod(const std::string& prod_id);
+
+    void forma_arbre_post(Sala* pare);
 
     public:
 

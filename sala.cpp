@@ -1,5 +1,7 @@
 #include "sala.h"
 
+Sala::Sala(const int& id): id(id) {}
+
 unsigned int Sala::consulta_id() {
     return id;
 }

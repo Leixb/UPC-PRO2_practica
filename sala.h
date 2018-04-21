@@ -4,6 +4,7 @@
 #include "estanteria.h"
 
 class Sala {
+    friend class Magatzem;
     unsigned int id;
 
     Estanteria estant;
@@ -11,6 +12,8 @@ class Sala {
     //Sala *pare;
 
     public:
+
+    Sala(const int& id);
 
     unsigned int consulta_id();
 

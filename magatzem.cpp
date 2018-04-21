@@ -3,6 +3,7 @@
 #include <map>
 #include <list>
 #include <queue>
+#include <iostream>
 using namespace std;
 
 
@@ -10,7 +11,37 @@ Producte* Magatzem::str_to_prod(const string& prod_id) {
     return &(*prod_map.at(prod_id));
 }
 
-void Magatzem::inicialitza() {} // TODO
+void Magatzem::inicialitza() {
+    cin >> n_sales;
+    sala_map = vector<Sala*> (n_sales+1);
+
+    int n;
+    cin >> n;
+    root = new Sala(n);
+    sala_map[n] = root;
+
+    forma_arbre_post(root);
+    // postordre
+    // dimensions de les sales
+    for (int i = 1; i <= n_sales; ++i) {
+        int f, c;
+        cin >> f >> c;
+        sala_map[i]->estant = Estanteria(f, c);
+    }
+} // TODO
+
+void Magatzem::forma_arbre_post(Sala* pare) {
+    int n;
+    cin >> n;
+    if (n == 0) return;
+    forma_arbre_post(
+        sala_map[n] = pare->esquerra = new Sala(n)
+    );
+    cin >> n;
+    forma_arbre_post(
+        sala_map[n] = pare->dreta = new Sala(n)
+    );
+}
 
 void Magatzem::poner_prod(const string& prod_id) {
     prod_map["hello"] = productes.begin();
