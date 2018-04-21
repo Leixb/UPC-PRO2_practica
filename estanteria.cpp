@@ -1,11 +1,8 @@
 #include "producte.h"
 
 #include<vector>
-using std::vector;
-
 #include<algorithm>
-using std::sort;
-using std::stable_sort;
+using namespace std;
 
 class Estanteria {
     vector<Producte*> estant;

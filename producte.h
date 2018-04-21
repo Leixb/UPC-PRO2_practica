@@ -1,17 +1,16 @@
 #ifndef PRODUCTE_H
 #define PRODUCTE_H
 
-#include<string>
-using std::string;
+#include <iostream>
 
 class Producte {
-    string id;
+    std::string id;
 
     unsigned int unitats;
 
     public:
 
-    Producte(string id);
+    Producte(std::string id);
 
     std::string consulta_id() const;
     unsigned int consulta_unitats() const;

@@ -1,13 +1,9 @@
 #include "sala.h"
 
 #include <map>
-using std::map;
-
 #include <list>
-using std::list;
-
 #include <queue>
-using std::queue;
+using namespace std;
 
 class Magatzem {
     Sala *root;

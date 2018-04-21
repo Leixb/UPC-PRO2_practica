@@ -1,5 +1,5 @@
-#include<string>
-using std::string;
+#include <iostream>
+using namespace std;
 
 class Producte {
     string id;

@@ -5,10 +5,8 @@
 
 #include<vector>
 
-using std::vector;
-
 class Estanteria {
-    vector<Producte*> estant;
+    std::vector<Producte*> estant;
     unsigned int files, columnes;
 
     unsigned int last_pos, elements;

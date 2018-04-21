@@ -4,18 +4,16 @@
 #include "sala.h"
 
 #include <map>
-using std::map;
-
 #include <list>
-using std::list;
+#include <vector>
 
 class Magatzem {
     Sala *root;
 
-    list<Producte> productes;
+    std::list<Producte> productes;
 
-    map<string, list<Producte>::iterator> prod_map;
-    map<unsigned int, Sala*> sala_map;
+    std::map<string, std::list<Producte>::iterator> prod_map;
+    std::vector<unsigned int, Sala*> sala_map;
 
     public:
 
