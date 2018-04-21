@@ -8,15 +8,15 @@ using namespace std;
 
 Sala::Sala(const unsigned int& id): id(id) {}
 
-unsigned int Sala::consulta_id() {
+unsigned int Sala::consulta_id() const {
     return id;
 }
 
-Sala* Sala::fill_dre() {
+Sala* Sala::fill_dre() const {
     return dreta;
 }
 
-Sala* Sala::fill_esq() {
+Sala* Sala::fill_esq() const {
     return esquerra;
 }
 

@@ -7,7 +7,7 @@
 using namespace std;
 
 
-Producte* Magatzem::str_to_prod(const string& prod_id) {
+Producte* Magatzem::str_to_prod(const string& prod_id) const {
     return &(*prod_map.at(prod_id));
 }
 
