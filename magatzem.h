@@ -26,7 +26,7 @@ class Magatzem {
 
     unsigned int poner_items(const unsigned int& sala_id, const string& prod_id, const unsigned int& cantidad);
 
-    void distribuir(const string& prod_id, const unsigned int& cantidad);
+    unsigned int distribuir(const string& prod_id, const unsigned int& cantidad);
 
     void compactar(const unsigned int& sala_id);
     void reorganizar(const unsigned int& sala_id);
