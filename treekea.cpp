@@ -4,7 +4,7 @@
 using namespace std;
 
 #define SPC "  "
-#define coutS cout << SPC
+#define OUTPUT(x) const auto out = x; cout << SPC << out << endl
 
 int main() {
     Magatzem mag;
@@ -34,8 +34,8 @@ int main() {
                 cin >> sala_id >> prod_id >> cantidad;
 
                 cout << ' ' << sala_id << ' ' << prod_id << ' ' << cantidad << endl;
+                OUTPUT(mag.poner_items(sala_id, prod_id, cantidad));
 
-                coutS << mag.poner_items(sala_id, prod_id, cantidad) << endl;
             } else if (operacio == "quitar_items") {
                 string prod_id;
                 int sala_id, cantidad;
@@ -43,7 +43,7 @@ int main() {
 
                 cout << ' ' << sala_id << ' ' << prod_id << ' ' << cantidad << endl;
 
-                coutS << mag.quitar_items(sala_id, prod_id, cantidad) << endl;
+                OUTPUT(mag.quitar_items(sala_id, prod_id, cantidad));
             } else if (operacio == "distribuir") {
                 string prod_id;
                 int cantidad;
@@ -51,7 +51,7 @@ int main() {
 
                 cout << ' ' << prod_id << ' ' << cantidad << endl;
 
-                coutS << mag.distribuir(prod_id, cantidad) << endl;
+                OUTPUT(mag.distribuir(prod_id, cantidad));
             } else if (operacio == "compactar") {
                 int sala_id;
                 cin >> sala_id;
@@ -89,17 +89,17 @@ int main() {
 
                 cout << ' ' << sala_id << ' ' << f << ' ' << c << endl;
 
-                coutS << mag.consultar_pos(sala_id, f, c)->consulta_id() << endl;
+                OUTPUT(mag.consultar_pos(sala_id, f, c)->consulta_id());
             } else if (operacio == "consultar_prod") {
                 string prod_id;
                 cin >> prod_id;
 
                 cout << ' ' << prod_id << endl;
 
-                coutS << mag.consultar_prod(prod_id) << endl;
+                OUTPUT(mag.consultar_prod(prod_id));
             } else throw "invalid command";
         } catch (...) {
-            coutS << "error" << endl;
+            OUTPUT("error");
         }
 
     }
