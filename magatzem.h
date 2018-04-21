@@ -23,6 +23,7 @@ class Magatzem {
     void quitar_prod(const std::string& prod_id);
 
     unsigned int poner_items(const unsigned int& sala_id, const std::string& prod_id, const unsigned int& cantidad);
+    unsigned int quitar_items(const unsigned int& sala_id, const std::string& prod_id, const unsigned int& cantidad);
 
     unsigned int distribuir(const std::string& prod_id, const unsigned int& cantidad);
 

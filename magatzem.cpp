@@ -19,7 +19,7 @@ class Magatzem {
 
     public:
 
-    void inicialitza();
+    void inicialitza() {} // TODO
 
     void poner_prod(const string& prod_id) {
         prod_map["hello"] = productes.begin();
@@ -38,6 +38,11 @@ class Magatzem {
     unsigned int poner_items(const unsigned int& sala_id, const string& prod_id, const unsigned int& cantidad) {
         Sala* sala = sala_map.at(sala_id);
         return sala->poner_items(str_to_prod(prod_id), cantidad);
+    }
+
+    unsigned int quitar_items(const unsigned int& sala_id, const std::string& prod_id, const unsigned int& cantidad) {
+        Sala* sala = sala_map.at(sala_id);
+        return sala->quitar_items(str_to_prod(prod_id), cantidad);
     }
 
     unsigned int distribuir(const string& prod_id, const unsigned int& cantidad) {
@@ -95,5 +100,5 @@ class Magatzem {
         return sala_map.at(sala_id)->consultar_pos(f, c);
     }
 
-    unsigned int consultar_prod(const string& prod_id) const;
+    unsigned int consultar_prod(const string& prod_id) const {} // TODO
 };
