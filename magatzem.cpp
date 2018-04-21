@@ -25,7 +25,7 @@ void Magatzem::inicialitza() {
     for (unsigned int i = 1; i <= n_sales; ++i) {
         unsigned int f, c;
         cin >> f >> c;
-        sala_map[i]->estant = Estanteria(f, c);
+        sala_map[i]->crea_estanteria(f, c);
     }
 }
 

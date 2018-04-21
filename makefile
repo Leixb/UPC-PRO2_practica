@@ -1,4 +1,4 @@
-objects = treekea.o magatzem.o sala.o estanteria.o producte.o
+objects = treekea.o magatzem.o sala.o producte.o
 test_dir = jocs_prova
 
 DIFF = diff -y
