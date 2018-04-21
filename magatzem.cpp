@@ -31,15 +31,16 @@ void Magatzem::inicialitza() {
 
 void Magatzem::forma_arbre_post(Sala* pare) {
     unsigned int esq, dre;
-    cin >> esq >> dre;
-    if (esq) {
+    cin >> esq;
+    if (esq)
         forma_arbre_post(
             sala_map[esq] = pare->esquerra = new Sala(esq)
         );
+    cin >> dre;
+    if (dre)
         forma_arbre_post(
             sala_map[dre] = pare->dreta = new Sala(dre)
         );
-    }
 }
 
 void Magatzem::poner_prod(const string& prod_id) {
