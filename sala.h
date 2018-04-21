@@ -12,6 +12,8 @@ class Sala {
 
     public:
 
+    unsigned int consulta_id();
+
     unsigned int poner_items(Producte* prod, const unsigned int& cantidad);
 
     void compactar();

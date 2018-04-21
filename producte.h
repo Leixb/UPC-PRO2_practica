@@ -13,6 +13,8 @@ class Producte {
 
     Producte(string id);
 
+    string consulta_id() const;
+
     void afegir(const unsigned int& num=1);
     void treure(const unsigned int& num=1);
 };

@@ -9,6 +9,10 @@ class Sala {
 
     public:
 
+    unsigned int consulta_id() {
+        return id;
+    }
+
     unsigned int poner_items(Producte* prod, const unsigned int& cantidad) {
         return estant.poner_items(prod, cantidad);
     }
