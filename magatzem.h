@@ -6,12 +6,15 @@
 #include <map>
 using std::map;
 
+#include <list>
+using std::list;
+
 class Magatzem {
     Sala *root;
 
-    vector<Producte> productes;
+    list<Producte> productes;
 
-    map<string, Producte*> prod_map;
+    map<string, list<Producte>::iterator> prod_map;
     map<unsigned int, Sala*> sala_map;
 
     public:

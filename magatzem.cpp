@@ -3,20 +3,34 @@
 #include <map>
 using std::map;
 
+#include <list>
+using std::list;
+
 class Magatzem {
     Sala *root;
 
-    vector<Producte> productes;
+    list<Producte> productes;
 
-    map<string, Producte*> prod_map;
+    map<string, list<Producte>::iterator> prod_map;
     map<unsigned int, Sala*> sala_map;
 
     public:
 
     void inicialitza();
 
-    void poner_prod(const string& prod_id);
-    void quitar_prod(const string& prod_id);
+    void poner_prod(const string& prod_id) {
+        prod_map["hello"] = productes.begin();
+        if (prod_map.find(prod_id) != prod_map.end()) throw "Ja existeix";
+        productes.push_back(Producte(prod_id));
+        prod_map[prod_id] = std::prev(productes.end());
+    }
+
+    void quitar_prod(const string& prod_id) {
+        auto const pos = prod_map.find(prod_id);
+        if (pos == prod_map.end()) throw "No existeix";
+        productes.erase(pos->second);
+        prod_map.erase(pos);
+    }
 
     unsigned int poner_items(const unsigned int& sala_id, const string& prod_id, const unsigned int& cantidad);
 
