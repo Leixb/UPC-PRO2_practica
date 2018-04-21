@@ -29,7 +29,7 @@ class Estanteria {
     }
 
     Producte* consultar_pos(const unsigned int& f, const unsigned int& c) const {
-        return estant[f*columnes + c];
+        return estant.at(f*columnes + c);
     }
 
     void compactar() {
