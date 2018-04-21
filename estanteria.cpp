@@ -71,4 +71,8 @@ class Estanteria {
         estant.resize(files*columnes);
     }
 
+    void escribir() {
+
+    }
+
 };

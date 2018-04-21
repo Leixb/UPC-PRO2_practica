@@ -27,6 +27,8 @@ class Estanteria {
     void reorganizar();
     void redimensionar(const unsigned int& f, const unsigned int& c);
 
+    void escribir();
+
 };
 
 #endif // ifndef ESTANTERIA_H

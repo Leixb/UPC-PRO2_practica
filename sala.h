@@ -14,12 +14,17 @@ class Sala {
 
     unsigned int consulta_id();
 
+    Sala* fill_dre();
+    Sala* fill_esq();
+
     unsigned int poner_items(Producte* prod, const unsigned int& cantidad);
     unsigned int quitar_items(Producte* prod, const unsigned int& cantidad);
 
     void compactar();
     void reorganizar();
     void redimensionar(const unsigned int& f, const unsigned int& c);
+
+    void escribir();
 
     Producte* consultar_pos(const unsigned int& f, const unsigned int& c) const;
 };
