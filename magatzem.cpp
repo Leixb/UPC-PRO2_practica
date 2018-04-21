@@ -121,4 +121,6 @@ Producte* Magatzem::consultar_pos(const unsigned int& sala_id, const unsigned in
     return sala_map.at(sala_id)->consultar_pos(f, c);
 }
 
-unsigned int Magatzem::consultar_prod(const string& prod_id) const {} // TODO
+unsigned int Magatzem::consultar_prod(const string& prod_id) const {
+    return prod_map.at(prod_id)->consulta_unitats();
+}

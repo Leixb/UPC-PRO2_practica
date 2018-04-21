@@ -3,6 +3,7 @@
 #include<algorithm>
 #include<iostream>
 #include<vector>
+#include<map>
 using namespace std;
 
 Sala::Sala(const unsigned int& id): id(id) {}
@@ -37,7 +38,8 @@ unsigned int Sala::poner_items(Producte* prod, unsigned int cantidad) {
 unsigned int Sala::quitar_items(Producte* prod, unsigned int cantidad) {
     for (unsigned int i = 0; i <= last_pos and cantidad; ++i) 
         if (estant[i] == prod)
-            estant[i] = nullptr, --cantidad, --elements;
+            estant[i] = nullptr, --cantidad, --elements,
+                prod->treure();
     // last_pos ?
     return cantidad;
 }
@@ -77,15 +79,24 @@ void Sala::redimensionar(const unsigned int& f, const unsigned int& c) {
 }
 
 void Sala::escribir() {
+    unsigned int no_nulls = 0;
+    map<Producte*, int> inventori;
     for (unsigned int i = files-1; i < files; --i) {
         cout << ' ';
         for (unsigned int j = 0; j < columnes; ++j) {
             Producte* prod = estant[i*columnes + j];
             cout << ' ';
             if (prod == nullptr) cout << "NULL";
-            else cout << prod->consulta_id();
+            else {
+                cout << prod->consulta_id();
+                ++inventori[prod], ++no_nulls;
+            }
         }
         cout << endl;
+    }
+    cout << "  " << no_nulls << endl;
+    for (auto prod : inventori) {
+        cout << "  " << prod.first->consulta_id() << ' ' << prod.second << endl;
     }
     // TODO: unitats en total i llista de productes
 }

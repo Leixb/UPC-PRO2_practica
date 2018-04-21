@@ -21,5 +21,5 @@ void Producte::treure(const unsigned int& num) {
 }
 
 void Producte::mostra() const {
-    cout << id << ' ' << unitats << endl;
+    cout << "  " << id << ' ' << unitats << endl;
 }
