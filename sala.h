@@ -9,11 +9,10 @@ class Sala {
 
     Estanteria estant;
     Sala *dreta, *esquerra;
-    //Sala *pare;
 
     public:
 
-    Sala(const int& id);
+    Sala(const unsigned int& id=0);
 
     unsigned int consulta_id();
 
