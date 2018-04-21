@@ -33,18 +33,31 @@ class Estanteria {
     }
 
     void compactar() {
-        stable_sort(estant.begin(), estant.end()/*, CUSTOM_SORT_TODO*/);
-        // custom sort:   si NULL al final, sino com si fossin iguals
+        //stable_sort(estant.begin(), estant.end(),
+        stable_sort(estant.begin(), estant.begin()+last_pos,
+            [](Producte* a, Producte* b)  -> bool  {
+                if (b == NULL) return true;
+                else if (a == NULL) return false;
+                return true;
+            }
+        );
     }
 
     void reorganizar() {
-        sort(estant.begin(), estant.end()/*, funcio comp k dereferencii els pointers*/ ); // COMPROVAR QUE PASSA AMB EL NULL!!!
+        //sort(estant.begin(), estant.end(),
+        sort(estant.begin(), estant.begin()+last_pos,
+            [](Producte* a, Producte* b) {
+                if (b == NULL) return true;
+                else if (a == NULL) return false;
+                return a->consulta_id() < b->consulta_id();
+            }
+        );
     }
 
     void redimensionar(const unsigned int& f, const unsigned int& c) {
         if (f*c < elements) throw "too small";
         compactar();
-        files = f, columnes = c;
+        files = f, columnes = c, last_pos = elements;
         estant.resize(files*columnes);
     }
 
