@@ -81,7 +81,16 @@ class Magatzem {
         sala_map.at(sala_id)->redimensionar(f, c);
     }
 
-    void inventario() const;
+    void inventario() {
+        productes.sort(
+            [](const Producte& a, const Producte& b) -> bool {
+                return a.consulta_id() < b.consulta_id();
+            }
+        );
+        for (const Producte& prod : productes)
+            prod.mostra();
+    }
+
     void escribir(const unsigned int& sala_id) const {
         sala_map.at(sala_id)->escribir();
     }

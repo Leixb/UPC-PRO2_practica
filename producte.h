@@ -13,10 +13,13 @@ class Producte {
 
     Producte(string id);
 
-    string consulta_id() const;
+    std::string consulta_id() const;
+    unsigned int consulta_unitats() const;
 
     void afegir(const unsigned int& num=1);
     void treure(const unsigned int& num=1);
+
+    void mostra() const;
 };
 
 #endif // ifndef PRODUCTE_H
