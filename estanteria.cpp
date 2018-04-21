@@ -23,7 +23,7 @@ class Estanteria {
     unsigned int poner_items(Producte* prod, unsigned int cantidad) {
         for (unsigned int i = 0; i < files*columnes and cantidad; ++i)
             if (estant[i] == NULL)
-                --cantidad, estant[i] = prod,
+                --cantidad, estant[i] = prod, prod->afegir(),
                 ++last_pos, last_pos = std::max(last_pos, i);
         return cantidad;
     }
@@ -38,13 +38,14 @@ class Estanteria {
     }
 
     void reorganizar() {
-        sort(estant.begin(), estant.end()); // COMPROVAR QUE PASSA AMB EL NULL!!!
+        sort(estant.begin(), estant.end()/*, funcio comp k dereferencii els pointers*/ ); // COMPROVAR QUE PASSA AMB EL NULL!!!
     }
 
     void redimensionar(const unsigned int& f, const unsigned int& c) {
         if (f*c < elements) throw "too small";
         compactar();
         files = f, columnes = c;
+        estant.resize(files*columnes);
     }
 
 };

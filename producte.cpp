@@ -4,9 +4,18 @@ using std::string;
 class Producte {
     string id;
 
-    int unitats;
+    unsigned int unitats;
 
     public:
 
-    Producte(string id);
+    Producte(string id): id(id), unitats(0) {}
+
+    void afegir(const unsigned int& num=1) {
+        unitats+=num;
+    };
+
+    void treure(const unsigned int& num=1) {
+        if (unitats < num) throw "No es poden treure mes unitats";
+        unitats-=num;
+    }
 };

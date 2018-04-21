@@ -7,11 +7,14 @@ using std::string;
 class Producte {
     string id;
 
-    int unitats;
+    unsigned int unitats;
 
     public:
 
     Producte(string id);
+
+    void afegir(const unsigned int& num=1);
+    void treure(const unsigned int& num=1);
 };
 
 #endif // ifndef PRODUCTE_H
