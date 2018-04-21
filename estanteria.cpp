@@ -1,6 +1,7 @@
 #include "estanteria.h"
 
 #include<algorithm>
+#include<iostream>
 #include<vector>
 using namespace std;
 
@@ -61,5 +62,15 @@ void Estanteria::redimensionar(const unsigned int& f, const unsigned int& c) {
 }
 
 void Estanteria::escribir() {
-
+    for (unsigned int i = files-1; i < files; --i) {
+        cout << ' ';
+        for (unsigned int j = 0; j < columnes; ++j) {
+            Producte* prod = estant[i*columnes + j];
+            cout << ' ';
+            if (prod == nullptr) cout << "NULL";
+            else cout << prod->consulta_id();
+        }
+        cout << endl;
+    }
+    // TODO: unitats en total i llista de productes
 }
