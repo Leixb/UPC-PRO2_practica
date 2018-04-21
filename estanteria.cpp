@@ -30,6 +30,11 @@ class Estanteria {
     }
 
     unsigned int quitar_items(Producte* prod, unsigned int cantidad) {
+        for (unsigned int i = 0; i <= last_pos and cantidad; ++i) 
+            if (estant[i] == prod)
+                estant[i] = NULL, --cantidad, --elements;
+        // last_pos ?
+        return cantidad;
     }
 
 
