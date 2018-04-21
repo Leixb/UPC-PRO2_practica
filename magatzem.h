@@ -8,7 +8,7 @@
 #include <vector>
 
 class Magatzem {
-    int n_sales;
+    unsigned int n_sales;
     Sala *root;
     std::vector<Sala*> sala_map;
 

@@ -22,8 +22,8 @@ void Magatzem::inicialitza() {
 
     forma_arbre_post(root);
 
-    for (int i = 1; i <= n_sales; ++i) {
-        int f, c;
+    for (unsigned int i = 1; i <= n_sales; ++i) {
+        unsigned int f, c;
         cin >> f >> c;
         sala_map[i]->estant = Estanteria(f, c);
     }
