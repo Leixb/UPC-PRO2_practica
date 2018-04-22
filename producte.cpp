@@ -1,4 +1,6 @@
 #include "producte.h"
+#include "excepcions.h"
+
 #include <iostream>
 using namespace std;
 
@@ -16,7 +18,7 @@ void Producte::afegir(const unsigned int& num) {
 };
 
 void Producte::treure(const unsigned int& num) {
-    if (unitats < num) throw "No es poden treure mes unitats";
+    if (unitats < num) throw UnitatsInsuficients();
     unitats-=num;
 }
 

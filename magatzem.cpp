@@ -1,4 +1,5 @@
 #include "magatzem.h"
+#include "excepcions.h"
 
 #include <map>
 #include <list>
@@ -6,9 +7,12 @@
 #include <iostream>
 using namespace std;
 
-
 Producte* Magatzem::str_to_prod(const string& prod_id) const {
-    return &(*prod_map.at(prod_id));
+    try {
+        return &(*prod_map.at(prod_id));
+    } catch (out_of_range) {
+        throw ProducteNoExistent();
+    }
 }
 
 void Magatzem::inicialitza() {
@@ -44,14 +48,14 @@ void Magatzem::forma_arbre_post(Sala* pare) {
 }
 
 void Magatzem::poner_prod(const string& prod_id) {
-    if (prod_map.find(prod_id) != prod_map.end()) throw "Ja existeix";
+    if (prod_map.find(prod_id) != prod_map.end()) throw ProducteJaExistent();
     productes.push_back(Producte(prod_id));
     prod_map[prod_id] = std::prev(productes.end());
 }
 
 void Magatzem::quitar_prod(const string& prod_id) {
     auto const pos = prod_map.find(prod_id);
-    if (pos == prod_map.end()) throw "No existeix";
+    if (pos == prod_map.end()) throw ProducteNoExistent();
     productes.erase(pos->second);
     prod_map.erase(pos);
 }
@@ -122,5 +126,5 @@ Producte* Magatzem::consultar_pos(const unsigned int& sala_id, const unsigned in
 }
 
 unsigned int Magatzem::consultar_prod(const string& prod_id) const {
-    return prod_map.at(prod_id)->consulta_unitats();
+    return str_to_prod(prod_id)->consulta_unitats();
 }

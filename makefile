@@ -9,6 +9,11 @@ CPPFLAGS = --std=c++11 -g -Wall
 TreeKEA: $(objects)
 	$(CPP) $(CPPFLAGS) -o TreeKEA $(objects)
 
+.PHONY: debug
+debug: $(objects)
+	$(CPP) $(CPPFLAGS) -c -DDEBUG treekea.cpp
+	$(CPP) $(CPPFLAGS) -o TreeKEA $(objects)
+
 %.o: %.cpp
 	$(CPP) $(CPPFLAGS) -c $< -o $@
 

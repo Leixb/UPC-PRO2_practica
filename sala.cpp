@@ -1,4 +1,5 @@
 #include "sala.h"
+#include "excepcions.h"
 
 #include<algorithm>
 #include<iostream>
@@ -72,7 +73,7 @@ void Sala::reorganizar() {
 }
 
 void Sala::redimensionar(const unsigned int& f, const unsigned int& c) {
-    if (f*c < elements) throw "too small";
+    if (f*c < elements) throw DimensionsInsuficients();
     compactar();
     files = f, columnes = c, last_pos = elements;
     estant.resize(files*columnes);
@@ -98,5 +99,4 @@ void Sala::escribir() {
     for (auto prod : inventori) {
         cout << "  " << prod.first->consulta_id() << ' ' << prod.second << endl;
     }
-    // TODO: unitats en total i llista de productes
 }

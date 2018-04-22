@@ -1,4 +1,5 @@
 #include "magatzem.h"
+#include "excepcions.h"
 
 #include <iostream>
 using namespace std;
@@ -98,8 +99,19 @@ int main() {
 
                 OUTPUT(mag.consultar_prod(prod_id));
             } else throw "invalid command";
+        } catch (const ExpectedError& e) {
+            OUTPUT("error");
+
+            #ifdef DEBUG
+                cerr << e.what() << endl;
+            #endif //DEBUG
+
+        } catch (const out_of_range& e) {
+            OUTPUT("error");
+            cerr << "Unexpected error:" << endl << e.what() << endl;
         } catch (...) {
             OUTPUT("error");
+            cerr << "Unexpected error" << endl;
         }
 
     }
