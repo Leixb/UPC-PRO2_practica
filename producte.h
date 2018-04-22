@@ -4,15 +4,9 @@
 #include<string>
 
 class Producte {
-    /**
-     * @brief Identificador unic del producte
-     */
-    std::string id;
+    std::string id; ///< Identificador unic del producte
 
-    /**
-     * @brief nombre d'unitats del producte al magatzem
-     */
-    unsigned int unitats;
+    unsigned int unitats; ///< Nombre d'unitats del producte al magatzem
 
     public:
 
@@ -28,41 +22,41 @@ class Producte {
     // Consultors
 
     /**
-     * @return id de l'objecte.
+     * @return @ref id
      */
     std::string consulta_id() const;
 
     /**
-     * @return nombre d'unitats de l'objecte al magatzem
+     * @return @ref unitats
      */
     unsigned int consulta_unitats() const;
 
     // Modificadors
 
     /**
-     * @brief Incrementa el contador d'unitats en num
+     * @brief Incrementa el contador d'unitats en @p num
      *
      * @param num unitats a afegir
      *
-     * @post unitats = unitats + num
+     * @post @ref unitats = @ref unitats + @p num
      */
     void afegir(const unsigned int& num=1);
 
     /**
-     * @brief Decrementa el contador d'unitats en num
+     * @brief Decrementa el contador d'unitats en @p num
      *
      * @param num unitats a disminuir
      *
-     * @pre num <= unitats
+     * @pre @p num <= @ref unitats
      *
-     * @post unitats = unitats - num
+     * @post @ref unitats = @ref unitats - @p num
      */
     void treure(const unsigned int& num=1);
 
     // IO
 
     /**
-     * @brief Mostra per std_out l'id i el nombre d'unitats separats per
+     * @brief Mostra per std_out l'@ref id i les @ref unitats separats per
      * un espai i seguits d'un salt de linea
      */
     void mostra() const;

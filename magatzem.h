@@ -20,9 +20,11 @@ class Magatzem {
      *
      * @param prod_id id del producte a buscar
      *
-     * @return punter al producte amd id == prod_id
+     * @return punter al producte amd Producte#id == prod_id que es troba a @ref
+     * productes
      *
-     * @throws std::out_of_range si no existeix un producte amb id == prod_id
+     * @throws  ProducteNoExistent() si no existeix un producte amb @ref
+     * Producte#id == \p prod_id a @ref productes
      */
     Producte* str_to_prod(const std::string& prod_id) const;
 
@@ -57,7 +59,7 @@ class Magatzem {
      *
      * @param prod_id id del producte a afegir
      *
-     * @throws error si el producte a afegir ja existeix
+     * @throws ProducteJaExistent() si el producte a afegir ja existeix
      */
     void poner_prod(const std::string& prod_id);
 
@@ -66,7 +68,7 @@ class Magatzem {
      *
      * @param prod_id id del producte a eliminar
      *
-     * @throws error si el producte a eliminar no existeix
+     * @throws ProducteNoExistent() si el producte a eliminar no existeix
      */
     void quitar_prod(const std::string& prod_id);
 
@@ -80,7 +82,9 @@ class Magatzem {
      * @return unitats de producte que no s'han pogut afegir ja que la sala
      * s'ha omplert fins la seva maxima capacitat
      *
-     * @throws error si no existeix el producte prod_id
+     * @throws ProducteNoExistent() si no existeix el producte prod_id
+     *
+     * @see Sala#poner_items
      */
     unsigned int poner_items(const unsigned int& sala_id, const std::string& prod_id, const unsigned int& cantidad);
 
@@ -94,7 +98,9 @@ class Magatzem {
      * @return unitats de producte que no s'han pogut eliminar ja que no hi
      * havia prous unitats del producte a la sala.
      *
-     * @throws error si no existeix el producte prod_id
+     * @throws ProducteNoExistent() si no existeix el producte prod_id
+     *
+     * @see Sala#quitar_items
      */
     unsigned int quitar_items(const unsigned int& sala_id, const std::string& prod_id, const unsigned int& cantidad);
 
@@ -106,6 +112,8 @@ class Magatzem {
      *
      * @return nombre d'unitats del producte que no s'han pogut distrbuir
      * seguint el procediment de distribució
+     *
+     * @see Sala#distribuir
      */
     unsigned int distribuir(const std::string& prod_id, const unsigned int& cantidad);
 
@@ -115,6 +123,8 @@ class Magatzem {
      * @param sala_id identificador de la sala
      *
      * @post la estanteria de la sala esta compactada
+     *
+     * @see Sala#compactar
      */
     void compactar(const unsigned int& sala_id);
 
@@ -124,6 +134,8 @@ class Magatzem {
      * @param sala_id identificador de la sala
      *
      * @post la estanteria de la sala esta ordenada
+     *
+     * @see sala#reorganizar
      */
     void reorganizar(const unsigned int& sala_id);
 
@@ -136,8 +148,10 @@ class Magatzem {
      *
      * @post la estanteria de la sala te noves dimensions
      *
-     * @throws error si les noves dimensions de l'estanteria no poden contenir
+     * @throws DimensionsInsuficients() si les noves dimensions de l'estanteria no poden contenir
      * els productes que tenia anteriorment
+     *
+     * @see Sala#redimensionar
      */
     void redimensionar(const unsigned int& sala_id, const unsigned int& f, const unsigned int& c);
 
@@ -146,10 +160,13 @@ class Magatzem {
      * d'unitats al magatzem ordenats alfabeticament per identificador
      */
     void inventario();
+
     /**
-     * @brief Mostra per std_out el contingut de l'estanteria de la sala
+     * @brief Mostra per std_out el contingut de l'estanteria de la sala.
      *
      * @param sala_id identificador de la sala a mostrar
+     *
+     * @see Sala#escribir
      */
     void escribir(const unsigned int& sala_id) const;
 
@@ -163,6 +180,8 @@ class Magatzem {
      *
      * @return punter al producte que es troba a la posicio especificada del
      * magatzem, *nullptr* si la posicio es buida
+     *
+     * @see Sala#consultar_pos
      */
     Producte* consultar_pos(const unsigned int& sala_id, const unsigned int& f, const unsigned int& c) const;
     /**
@@ -172,7 +191,9 @@ class Magatzem {
      *
      * @return nombre d'unitats del producte al magatzem
      *
-     * @throws error si el producte no existeix
+     * @throws ProducteNoExistent() si el producte no existeix
+     *
+     * @see Producte#consulta_unitats
      */
     unsigned int consultar_prod(const std::string& prod_id) const;
 };

@@ -7,7 +7,7 @@
 
 class Sala {
     friend class Magatzem;
-    unsigned int id;
+    unsigned int id; ///< identificador de la sala
 
     std::vector<Producte*> estant;
     unsigned int files, columnes;
@@ -77,24 +77,37 @@ class Sala {
     void reorganizar();
 
     /**
-     * @brief Compacta el contingut de l'estanteria i canvia les dimensions
-     * de l'estanteria a f*c. Si les noves dimensions no son suficients per
-     * encabir els continguts  anteriors llença una exepció i no es modifica
-     * l'estanteria
+     * @brief Compacta i canvia les dimensions de l'estanteria
+     *
+     * Si les nova mida de l'estanteria es suficient per a mantenir els
+     * productes, es compacta (@ref compactar) el contingut de l'estanteria i
+     * canvia les dimensions de l'estanteria a f*c. Si les noves dimensions no
+     * son suficients per encabir els continguts  anteriors llença una exepció
+     * i **no** es modifica l'estanteria.
+     *
      *
      * @param f nou nombre de files
      * @param c nou nombre de columnes
      *
      * @post estanteria queda compactada i amb nova mida f*c.
      *
-     * @throws error si elements > f*c
+     * @throws DimensionsInsuficients() si elements > f*c
      */
     void redimensionar(const unsigned int& f, const unsigned int& c);
 
     /**
-     * @brief mostra per pantalla els continguts de l'estanteria
+     * @brief Treu per std_out els continguts de l'estanteria
+     *
+     * Els continugts es mostren per files en ordre descendent. El contingut
+     * que es mostra son els identificadors del producte que es troba a cada
+     * posició. Si es buida es mostra "NULL".
+     *
+     * Despres es mostra el nombre de productes a l'estanteria no NULLs
+     * seguit d'un inventari per ordre alfabetic de cada producte i el nombre
+     * d'unitats que es troben a l'estanteria. Si el producte no es troba a
+     * l'estanteria no es mostra.
      */
-    void escribir();
+    void escribir() const;
 
 };
 

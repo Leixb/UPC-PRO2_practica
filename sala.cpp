@@ -79,7 +79,7 @@ void Sala::redimensionar(const unsigned int& f, const unsigned int& c) {
     estant.resize(files*columnes);
 }
 
-void Sala::escribir() {
+void Sala::escribir() const {
     unsigned int no_nulls = 0;
     map<Producte*, int> inventori;
     for (unsigned int i = files-1; i < files; --i) {
