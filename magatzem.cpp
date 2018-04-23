@@ -109,10 +109,10 @@ void Magatzem::redimensionar(const unsigned int& sala_id, const unsigned int& f,
 
 void Magatzem::inventario() {
     productes.sort(
-            [](const Producte& a, const Producte& b) -> bool {
+        [](const Producte& a, const Producte& b) -> bool {
             return a.consulta_id() < b.consulta_id();
-            }
-            );
+        }
+    );
     for (const Producte& prod : productes)
         prod.mostra();
 }

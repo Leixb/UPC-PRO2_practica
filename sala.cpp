@@ -53,23 +53,23 @@ Producte* Sala::consultar_pos(const unsigned int& f, const unsigned int& c) cons
 void Sala::compactar() {
     //stable_sort(estant.begin(), estant.end(),
     stable_sort(estant.begin(), estant.begin()+last_pos,
-            [](Producte* a, Producte* b)  -> bool  {
+        [](Producte* a, Producte* b)  -> bool  {
             if (b == nullptr) return true;
             else if (a == nullptr) return false;
             return true;
-            }
-            );
+        }
+    );
 }
 
 void Sala::reorganizar() {
     //sort(estant.begin(), estant.end(),
     sort(estant.begin(), estant.begin()+last_pos,
-            [](Producte* a, Producte* b) {
+        [](Producte* a, Producte* b) {
             if (b == nullptr) return true;
             else if (a == nullptr) return false;
             return a->consulta_id() < b->consulta_id();
-            }
-        );
+        }
+    );
 }
 
 void Sala::redimensionar(const unsigned int& f, const unsigned int& c) {
@@ -96,7 +96,6 @@ void Sala::escribir() const {
         cout << endl;
     }
     cout << "  " << no_nulls << endl;
-    for (auto prod : inventori) {
+    for (auto prod : inventori)
         cout << "  " << prod.first->consulta_id() << ' ' << prod.second << endl;
-    }
 }
