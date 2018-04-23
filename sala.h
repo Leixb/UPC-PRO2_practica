@@ -5,16 +5,21 @@
 
 #include<vector>
 
+/**
+ * @brief Sala del magatzem
+ */
 class Sala {
     friend class Magatzem;
-    unsigned int id; ///< identificador de la sala
+    unsigned int id; ///< identificador de la sala.
 
-    std::vector<Producte*> estant;
-    unsigned int files, columnes;
+    std::vector<Producte*> estant;  ///< Productes de la sala en el seu ordre corresponent.
+    unsigned int files, columnes;   ///< Dimensions de l'estanteria.
 
-    unsigned int last_pos, elements;
+    unsigned int last_pos,      ///< Ultima posició en la que es pot trobar un element no NULL.
+                 elements;      ///< Nombre de productes a la sala.
 
-    Sala *dreta, *esquerra;
+    Sala *esquerra, ///< Apuntador a la Sala filla esquerra. *nullptr* si la sala actual es una fulla.
+         *dreta;    ///< Apuntador a la Sala filla dreta. *nullptr* si la sala actual es una fulla.
 
     public:
 

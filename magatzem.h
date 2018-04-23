@@ -7,13 +7,16 @@
 #include <list>
 #include <vector>
 
+/**
+ * @brief Classe principal, administra les sales i productes
+ */
 class Magatzem {
-    unsigned int n_sales;
-    Sala *root;
-    std::vector<Sala*> sala_map;
+    unsigned int n_sales; ///< Nombre de sales al magatzem.
+    Sala *root; ///< Sala principal, arrel, de l'arbre de sales.
+    std::vector<Sala*> sala_map; ///< Relaciona l'id d'una sala amb la seva posició a la memoria.
 
-    std::list<Producte> productes;
-    std::map<std::string, std::list<Producte>::iterator> prod_map;
+    std::list<Producte> productes; ///< Contenidor per als productes.
+    std::map<std::string, std::list<Producte>::iterator> prod_map; ///< Relaciona l'id d'un producte amb la seva posició a la llista.
 
     /**
      * @brief Metode per trobar el objecte Producte associat a un id

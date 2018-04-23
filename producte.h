@@ -3,6 +3,9 @@
 
 #include<string>
 
+/**
+ * @brief Producte del magatzem
+ */
 class Producte {
     std::string id; ///< Identificador unic del producte
 
