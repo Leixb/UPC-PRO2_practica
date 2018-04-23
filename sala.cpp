@@ -96,6 +96,6 @@ void Sala::escribir() const {
         cout << endl;
     }
     cout << "  " << no_nulls << endl;
-    for (auto prod : inventori)
+    for (const pair<Producte*, int>& prod : inventori)
         cout << "  " << prod.first->consulta_id() << ' ' << prod.second << endl;
 }

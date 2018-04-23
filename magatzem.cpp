@@ -54,7 +54,7 @@ void Magatzem::poner_prod(const string& prod_id) {
 }
 
 void Magatzem::quitar_prod(const string& prod_id) {
-    auto const pos = prod_map.find(prod_id);
+    const map<string, list<Producte>::iterator>::iterator pos = prod_map.find(prod_id);
     if (pos == prod_map.end()) throw ProducteNoExistent();
     productes.erase(pos->second);
     prod_map.erase(pos);
