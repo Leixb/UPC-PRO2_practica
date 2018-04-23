@@ -50,7 +50,7 @@ void Magatzem::forma_arbre_post(Sala* pare) {
 void Magatzem::poner_prod(const string& prod_id) {
     if (prod_map.find(prod_id) != prod_map.end()) throw ProducteJaExistent();
     productes.push_back(Producte(prod_id));
-    prod_map[prod_id] = std::prev(productes.end());
+    prod_map[prod_id] = prev(productes.end());
 }
 
 void Magatzem::quitar_prod(const string& prod_id) {
@@ -65,7 +65,7 @@ unsigned int Magatzem::poner_items(const unsigned int& sala_id, const string& pr
     return sala->poner_items(str_to_prod(prod_id), cantidad);
 }
 
-unsigned int Magatzem::quitar_items(const unsigned int& sala_id, const std::string& prod_id, const unsigned int& cantidad) {
+unsigned int Magatzem::quitar_items(const unsigned int& sala_id, const string& prod_id, const unsigned int& cantidad) {
     Sala* sala = sala_map.at(sala_id);
     return sala->quitar_items(str_to_prod(prod_id), cantidad);
 }
@@ -73,7 +73,7 @@ unsigned int Magatzem::quitar_items(const unsigned int& sala_id, const std::stri
 unsigned int Magatzem::distribuir(const string& prod_id, const unsigned int& cantidad) {
     Producte* prod = str_to_prod(prod_id);
 
-    queue<std::pair<Sala*, int> > salas;
+    queue<pair<Sala*, int> > salas;
     salas.push({root, cantidad});
 
     unsigned int no_distribuidas = 0;

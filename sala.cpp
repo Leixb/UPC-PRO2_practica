@@ -31,7 +31,7 @@ unsigned int Sala::poner_items(Producte* prod, unsigned int cantidad) {
     for (unsigned int i = 0; i < files*columnes and cantidad; ++i)
         if (estant[i] == nullptr)
             --cantidad, estant[i] = prod, prod->afegir(),
-                ++last_pos, last_pos = std::max(last_pos, i),
+                ++last_pos, last_pos = max(last_pos, i),
                 ++elements;
     return cantidad;
 }
