@@ -1,5 +1,5 @@
-#include "producte.h"
-#include "excepcions.h"
+#include "producte.hh"
+#include "excepcions.hh"
 
 #include <iostream>
 using namespace std;

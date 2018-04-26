@@ -1,5 +1,5 @@
-#include "sala.h"
-#include "excepcions.h"
+#include "sala.hh"
+#include "excepcions.hh"
 
 #include<algorithm>
 #include<iostream>

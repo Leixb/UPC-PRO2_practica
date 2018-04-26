@@ -11,10 +11,10 @@ TreeKEA: $(objects)
 
 .PHONY: debug
 debug: $(objects)
-	$(CPP) $(CPPFLAGS) -c -DDEBUG treekea.cpp
+	$(CPP) $(CPPFLAGS) -c -DDEBUG treekea.cc
 	$(CPP) $(CPPFLAGS) -o TreeKEA $(objects)
 
-%.o: %.cpp
+%.o: %.cc
 	$(CPP) $(CPPFLAGS) -c $< -o $@
 
 .PHONY: clean
@@ -26,6 +26,6 @@ test: TreeKEA
 	./TreeKEA <$(test_dir)/sample.inp >$(test_dir)/test.out
 	$(DIFF) $(test_dir)/sample.cor $(test_dir)/test.out
 
-doc: doxygen.config *.h *.cpp
+doc: doxygen.config *.hh *.cc
 	doxygen doxygen.config
 	make -C doc/latex

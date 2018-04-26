@@ -1,5 +1,5 @@
-#include "magatzem.h"
-#include "excepcions.h"
+#include "magatzem.hh"
+#include "excepcions.hh"
 
 #include <iostream>
 using namespace std;

@@ -1,7 +1,7 @@
 #ifndef SALA_H
 #define SALA_H
 
-#include "producte.h"
+#include "producte.hh"
 
 #include<vector>
 

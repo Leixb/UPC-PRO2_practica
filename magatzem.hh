@@ -1,7 +1,7 @@
 #ifndef MAGATZEM_H
 #define MAGATZEM_H
 
-#include "sala.h"
+#include "sala.hh"
 
 #include <map>
 #include <list>
