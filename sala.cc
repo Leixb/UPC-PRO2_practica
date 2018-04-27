@@ -61,7 +61,7 @@ void Sala::compactar() {
 }
 
 void Sala::reorganizar() {
-    sort(estant.begin(), estant.begin()+last_pos,
+    sort(estant.begin(), estant.begin()+last_pos+1,
         [](const string& a, const string& b) {
             if (b == "") return true;
             else if (a == "") return false;

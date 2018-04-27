@@ -46,3 +46,7 @@ void Inventari::mostra() const {
     for (const auto& element : contador)
         cout << "  " << element.first << ' ' << element.second << endl;
 }
+
+bool Inventari::existeix_producte(const string& prod_id) const {
+    return contador.find(prod_id) != contador.end();
+}

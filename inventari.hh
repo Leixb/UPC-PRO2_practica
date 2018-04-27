@@ -16,5 +16,7 @@ class Inventari {
 
     unsigned int consultar_producte(const std::string& prod_id);
 
+    bool existeix_producte(const std::string& prod_id) const;
+
     void mostra() const;
 };
