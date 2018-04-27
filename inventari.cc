@@ -7,9 +7,7 @@
 
 using namespace std;
 
-Inventari::Inventari(): last_query(nullptr), last_query_id("NULL") {
-
-}
+Inventari::Inventari(): last_query(nullptr), last_query_id("NULL") {}
 
 unsigned int& Inventari::query(const string& prod_id) {
     if (prod_id == last_query_id) return *last_query;
