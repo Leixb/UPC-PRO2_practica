@@ -7,12 +7,6 @@
 #include<map>
 using namespace std;
 
-Sala::Sala(const unsigned int& id): id(id) {}
-
-unsigned int Sala::consulta_id() const {
-    return id;
-}
-
 Sala* Sala::fill_dre() const {
     return dreta;
 }

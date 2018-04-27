@@ -9,7 +9,6 @@
  */
 class Sala {
     friend class Magatzem;
-    unsigned int id; ///< identificador de la sala.
 
     std::vector<std::string> estant;  ///< Productes de la sala en el seu ordre corresponent.
     unsigned int files, columnes;   ///< Dimensions de l'estanteria.
@@ -22,20 +21,7 @@ class Sala {
 
     public:
 
-    /**
-     * @brief Constructor
-     *
-     * @param id identificador de la sala.
-     */
-    Sala(const unsigned int& id=0);
-
-
     // Consultors
-
-    /**
-     * @return  retorna l'id associat a la sala.
-     */
-    unsigned int consulta_id() const;
 
     /**
      * @return Retorna el punter a la sala a la dreta de l'actual
