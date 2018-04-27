@@ -2480,3 +2480,12 @@ GENERATE_LEGEND        = YES
 # This tag requires that the tag HAVE_DOT is set to YES.
 
 DOT_CLEANUP            = YES
+
+#---------------------------------------------------------------------------
+# Algunas palabras reservadas añadidas para PRO2  
+#---------------------------------------------------------------------------
+ALIASES += cost=" \par Cost\n" 
+# en html, no pone el borde verde de \pre o \post; para solucionarlo
+# hay que modificar el doxygen.css
+# en latex, queda con menos indentación que \pre o \post; para solucionarlo
+# hay que modificar el doxygen.sty
