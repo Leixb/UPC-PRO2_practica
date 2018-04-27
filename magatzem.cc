@@ -7,14 +7,6 @@
 #include <iostream>
 using namespace std;
 
-Producte* Magatzem::str_to_prod(const string& prod_id) const {
-    try {
-        return &(*prod_map.at(prod_id));
-    } catch (out_of_range) {
-        throw ProducteNoExistent();
-    }
-}
-
 void Magatzem::inicialitza() {
     cin >> n_sales;
     sala_map = vector<Sala*> (n_sales+1, nullptr);
@@ -48,30 +40,40 @@ void Magatzem::forma_arbre_post(Sala* pare) {
 }
 
 void Magatzem::poner_prod(const string& prod_id) {
-    if (prod_map.find(prod_id) != prod_map.end()) throw ProducteJaExistent();
-    productes.push_back(Producte(prod_id));
-    prod_map[prod_id] = prev(productes.end());
+    inv.afegir_prod(prod_id);
 }
 
 void Magatzem::quitar_prod(const string& prod_id) {
-    const map<string, list<Producte>::iterator>::iterator pos = prod_map.find(prod_id);
-    if (pos == prod_map.end()) throw ProducteNoExistent();
-    productes.erase(pos->second);
-    prod_map.erase(pos);
+    inv.quitar_prod(prod_id);
 }
 
 unsigned int Magatzem::poner_items(const unsigned int& sala_id, const string& prod_id, const unsigned int& cantidad) {
     Sala* sala = sala_map.at(sala_id);
-    return sala->poner_items(str_to_prod(prod_id), cantidad);
+
+    if (!inv.existeix_producte(prod_id)) throw ProducteNoExistent();
+
+    const unsigned int sobrants = sala->poner_items(prod_id, cantidad);
+
+    inv.afegir_unitats(prod_id, cantidad - sobrants);
+
+    return sobrants;
 }
 
 unsigned int Magatzem::quitar_items(const unsigned int& sala_id, const string& prod_id, const unsigned int& cantidad) {
     Sala* sala = sala_map.at(sala_id);
-    return sala->quitar_items(str_to_prod(prod_id), cantidad);
+
+    if (!inv.existeix_producte(prod_id)) throw ProducteNoExistent();
+
+    const unsigned int sobrants = sala->quitar_items(prod_id, cantidad);
+
+    inv.treure_unitats(prod_id, cantidad - sobrants);
+
+    return sobrants;
 }
 
 unsigned int Magatzem::distribuir(const string& prod_id, const unsigned int& cantidad) {
-    Producte* prod = str_to_prod(prod_id);
+
+    if (!inv.existeix_producte(prod_id)) throw ProducteNoExistent();
 
     queue<pair<Sala*, int> > salas;
     salas.push({root, cantidad});
@@ -79,18 +81,20 @@ unsigned int Magatzem::distribuir(const string& prod_id, const unsigned int& can
     unsigned int no_distribuidas = 0;
 
     while(!salas.empty()) {
-        unsigned int cantidad = salas.front().second;
+        unsigned int cantidad_sala = salas.front().second;
         Sala* sala = salas.front().first;
         salas.pop();
 
-        cantidad = sala->poner_items(prod, cantidad);
-        if (cantidad) {
+        cantidad_sala = sala->poner_items(prod_id, cantidad_sala);
+        if (cantidad_sala) {
             if (sala->fill_esq() != NULL) {
-                salas.push({sala->fill_esq(), cantidad/2 + cantidad%2});
-                salas.push({sala->fill_dre(), cantidad/2});
-            } else no_distribuidas += cantidad;
+                salas.push({sala->fill_esq(), cantidad_sala/2 + cantidad_sala%2});
+                salas.push({sala->fill_dre(), cantidad_sala/2});
+            } else no_distribuidas += cantidad_sala;
         }
     }
+
+    inv.afegir_unitats(prod_id, cantidad - no_distribuidas);
 
     return no_distribuidas;
 }
@@ -108,23 +112,17 @@ void Magatzem::redimensionar(const unsigned int& sala_id, const unsigned int& f,
 }
 
 void Magatzem::inventario() {
-    productes.sort(
-        [](const Producte& a, const Producte& b) -> bool {
-            return a.consulta_id() < b.consulta_id();
-        }
-    );
-    for (const Producte& prod : productes)
-        prod.mostra();
+    inv.mostra();
 }
 
 void Magatzem::escribir(const unsigned int& sala_id) const {
     sala_map.at(sala_id)->escribir();
 }
 
-Producte* Magatzem::consultar_pos(const unsigned int& sala_id, const unsigned int& f, const unsigned int& c) const {
+string Magatzem::consultar_pos(const unsigned int& sala_id, const unsigned int& f, const unsigned int& c) const {
     return sala_map.at(sala_id)->consultar_pos(f, c);
 }
 
-unsigned int Magatzem::consultar_prod(const string& prod_id) const {
-    return str_to_prod(prod_id)->consulta_unitats();
+unsigned int Magatzem::consultar_prod(const string& prod_id) {
+    return inv.consultar_producte(prod_id);
 }

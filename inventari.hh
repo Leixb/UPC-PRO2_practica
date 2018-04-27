@@ -1,0 +1,27 @@
+#include<map>
+
+class Inventari {
+    std::map <std::string, unsigned int> contador;
+
+    unsigned int* last_query;
+    std::string last_query_id;
+
+    unsigned int& query(const std::string& prod_id);
+
+    public:
+
+    Inventari();
+
+    void afegir_prod(const std::string prod_id);
+
+    void quitar_prod(const std::string prod_id);
+
+    void afegir_unitats(const std::string& prod_id, const unsigned int& unitats=1);
+    void treure_unitats(const std::string& prod_id, const unsigned int& unitats=1);
+
+    unsigned int consultar_producte(const std::string& prod_id);
+
+    bool existeix_producte(const std::string& prod_id) const;
+
+    void mostra() const;
+};

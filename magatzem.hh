@@ -2,6 +2,7 @@
 #define MAGATZEM_H
 
 #include "sala.hh"
+#include "inventari.hh"
 
 #include <map>
 #include <list>
@@ -15,21 +16,7 @@ class Magatzem {
     Sala *root; ///< Sala principal, arrel, de l'arbre de sales.
     std::vector<Sala*> sala_map; ///< Relaciona l'id d'una sala amb la seva posició a la memoria.
 
-    std::list<Producte> productes; ///< Contenidor per als productes.
-    std::map<std::string, std::list<Producte>::iterator> prod_map; ///< Relaciona l'id d'un producte amb la seva posició a la llista.
-
-    /**
-     * @brief Metode per trobar el objecte Producte associat a un id
-     *
-     * @param prod_id id del producte a buscar
-     *
-     * @return punter al producte amd Producte#id == prod_id que es troba a @ref
-     * productes
-     *
-     * @throws  ProducteNoExistent() si no existeix un producte amb @ref
-     * Producte#id == \p prod_id a @ref productes
-     */
-    Producte* str_to_prod(const std::string& prod_id) const;
+    Inventari inv;
 
     /**
      * @brief Llegeix per std_in un arbre binari en post ordre i l'associa a
@@ -186,7 +173,7 @@ class Magatzem {
      *
      * @see Sala#consultar_pos
      */
-    Producte* consultar_pos(const unsigned int& sala_id, const unsigned int& f, const unsigned int& c) const;
+    std::string consultar_pos(const unsigned int& sala_id, const unsigned int& f, const unsigned int& c) const;
     /**
      * @brief Consulta el nombre d'unitats d'un producte al magatzem
      *
@@ -198,7 +185,7 @@ class Magatzem {
      *
      * @see Producte#consulta_unitats
      */
-    unsigned int consultar_prod(const std::string& prod_id) const;
+    unsigned int consultar_prod(const std::string& prod_id);
 };
 
 #endif // ifndef MAGATZEM_H

@@ -1,9 +1,8 @@
 #ifndef SALA_H
 #define SALA_H
 
-#include "producte.hh"
-
 #include<vector>
+#include<string>
 
 /**
  * @brief Sala del magatzem
@@ -12,7 +11,7 @@ class Sala {
     friend class Magatzem;
     unsigned int id; ///< identificador de la sala.
 
-    std::vector<Producte*> estant;  ///< Productes de la sala en el seu ordre corresponent.
+    std::vector<std::string> estant;  ///< Productes de la sala en el seu ordre corresponent.
     unsigned int files, columnes;   ///< Dimensions de l'estanteria.
 
     unsigned int last_pos,      ///< Ultima posició en la que es pot trobar un element no NULL.
@@ -56,14 +55,14 @@ class Sala {
      * @return punter al Producte que es troba a la posicio f, c de
      * l'estanteria, si es buit retorna *nullptr*
      */
-    Producte* consultar_pos(const unsigned int& f, const unsigned int& c) const;
+    std::string consultar_pos(const unsigned int& f, const unsigned int& c) const;
 
     // Metodes
 
     void crea_estanteria(const unsigned int& f, const unsigned int& c);
 
-    unsigned int poner_items(Producte* prod, unsigned int cantidad);
-    unsigned int quitar_items(Producte* prod, unsigned int cantidad);
+    unsigned int poner_items(const std::string& prod, unsigned int cantidad);
+    unsigned int quitar_items(const std::string& prod, unsigned int cantidad);
 
     /**
      * @brief Elimina els espais entre elements de l'estanteria mantenint

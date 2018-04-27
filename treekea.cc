@@ -90,7 +90,7 @@ int main() {
 
                 cout << ' ' << sala_id << ' ' << f << ' ' << c << endl;
 
-                OUTPUT(mag.consultar_pos(sala_id, f, c)->consulta_id());
+                OUTPUT(mag.consultar_pos(sala_id, f, c));
             } else if (operacio == "consultar_prod") {
                 string prod_id;
                 cin >> prod_id;
