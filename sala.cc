@@ -22,52 +22,50 @@ Sala* Sala::fill_esq() const {
 }
 
 void Sala::crea_estanteria(const unsigned int& f, const unsigned int& c) {
-    estant = vector<Producte*>(f*c, nullptr);
+    estant = vector<string>(f*c, "");
     last_pos = elements = 0;
     files = f, columnes = c;
 }
 
-unsigned int Sala::poner_items(Producte* prod, unsigned int cantidad) {
+unsigned int Sala::poner_items(const string& prod_id, unsigned int cantidad) {
     for (unsigned int i = 0; i < files*columnes and cantidad; ++i)
-        if (estant[i] == nullptr)
-            --cantidad, estant[i] = prod, prod->afegir(),
-                ++last_pos, last_pos = max(last_pos, i),
-                ++elements;
+        if (estant[i] == "")
+            --cantidad, estant[i] = prod_id,
+            last_pos = max(last_pos, i),
+            ++elements;
     return cantidad;
 }
 
-unsigned int Sala::quitar_items(Producte* prod, unsigned int cantidad) {
+unsigned int Sala::quitar_items(const string& prod_id, unsigned int cantidad) {
     for (unsigned int i = 0; i <= last_pos and cantidad; ++i) 
-        if (estant[i] == prod)
-            estant[i] = nullptr, --cantidad, --elements,
-                prod->treure();
+        if (estant[i] == prod_id)
+            estant[i] = "", --cantidad, --elements;
     // last_pos ?
     return cantidad;
 }
 
 
-Producte* Sala::consultar_pos(const unsigned int& f, const unsigned int& c) const {
+string Sala::consultar_pos(const unsigned int& f, const unsigned int& c) const {
     return estant.at(f*columnes + c);
 }
 
 void Sala::compactar() {
     //stable_sort(estant.begin(), estant.end(),
     stable_sort(estant.begin(), estant.begin()+last_pos,
-        [](Producte* a, Producte* b)  -> bool  {
-            if (b == nullptr) return true;
-            else if (a == nullptr) return false;
+        [](const string& a, const string& b)  -> bool  {
+            if (b == "") return true;
+            else if (a == "") return false;
             return true;
         }
     );
 }
 
 void Sala::reorganizar() {
-    //sort(estant.begin(), estant.end(),
     sort(estant.begin(), estant.begin()+last_pos,
-        [](Producte* a, Producte* b) {
-            if (b == nullptr) return true;
-            else if (a == nullptr) return false;
-            return a->consulta_id() < b->consulta_id();
+        [](const string& a, const string& b) {
+            if (b == "") return true;
+            else if (a == "") return false;
+            return a < b;
         }
     );
 }
@@ -81,21 +79,21 @@ void Sala::redimensionar(const unsigned int& f, const unsigned int& c) {
 
 void Sala::escribir() const {
     unsigned int no_nulls = 0;
-    map<Producte*, int> inventori;
+    map<string, unsigned int> inventori;
     for (unsigned int i = files-1; i < files; --i) {
         cout << ' ';
         for (unsigned int j = 0; j < columnes; ++j) {
-            Producte* prod = estant[i*columnes + j];
+            string prod = estant[i*columnes + j];
             cout << ' ';
-            if (prod == nullptr) cout << "NULL";
+            if (prod == "") cout << "NULL";
             else {
-                cout << prod->consulta_id();
+                cout << prod;
                 ++inventori[prod], ++no_nulls;
             }
         }
         cout << endl;
     }
     cout << "  " << no_nulls << endl;
-    for (const pair<Producte*, int>& prod : inventori)
-        cout << "  " << prod.first->consulta_id() << ' ' << prod.second << endl;
+    for (const pair<string, int>& prod : inventori)
+        cout << "  " << prod.first << ' ' << prod.second << endl;
 }
