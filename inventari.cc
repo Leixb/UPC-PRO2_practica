@@ -7,12 +7,19 @@
 
 using namespace std;
 
+Inventari::Inventari(): last_query(nullptr), last_query_id("NULL") {
+
+}
+
 unsigned int& Inventari::query(const string& prod_id) {
+    if (prod_id == last_query_id) return *last_query;
     try {
-        return contador.at(prod_id);
+        last_query = &contador.at(prod_id);
     } catch (out_of_range) {
         throw ProducteNoExistent();
     }
+    last_query_id = prod_id;
+    return *last_query;
 }
 
 void Inventari::afegir_prod(const string prod_id) {
@@ -27,6 +34,8 @@ void Inventari::quitar_prod(const string prod_id) {
 
     if (pos == contador.end())
         throw ProducteNoExistent();
+
+    if (prod_id == last_query_id) last_query_id = "";
 
     contador.erase(pos);
 }

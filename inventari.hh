@@ -3,9 +3,14 @@
 class Inventari {
     std::map <std::string, unsigned int> contador;
 
+    unsigned int* last_query;
+    std::string last_query_id;
+
     unsigned int& query(const std::string& prod_id);
 
     public:
+
+    Inventari();
 
     void afegir_prod(const std::string prod_id);
 
