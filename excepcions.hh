@@ -1,3 +1,10 @@
+/**
+ * @file excepcions.hh
+ * @brief Especificació de les excepcions
+ */
+#ifndef EXCEPCIONS_H
+#define EXCEPCIONS_H value
+
 #include<exception>
 
 class ExpectedError : public std::exception  {};
@@ -25,3 +32,4 @@ class DimensionsInsuficients : public ExpectedError {
         return "Les dimentsions donades no son sufificents per a contenir els productes";
     }
 };
+#endif /* ifndef EXCEPCIONS_H */

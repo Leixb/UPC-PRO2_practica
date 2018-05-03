@@ -1,3 +1,7 @@
+ /**
+ * @file sala.hh
+ * @brief Especificació de la classe Sala
+ */
 #ifndef SALA_H
 #define SALA_H
 
@@ -27,6 +31,7 @@ class Sala {
      * @return Retorna el punter a la sala a la dreta de l'actual
      */
     Sala* fill_dre() const;
+
     /**
      * @return Retorna el punter a la sala a l'esquerra de l'actual
      */
@@ -45,9 +50,39 @@ class Sala {
 
     // Metodes
 
+    /**
+     * @brief Assigna una mida a l'estanteria de la sala
+     *
+     * @param f Nombre de files
+     * @param c Nombre de columnes
+     *
+     * @post La sala conté una estanteria buida de mida f*c
+     */
     void crea_estanteria(const unsigned int& f, const unsigned int& c);
 
+    /**
+     * @brief Afegeix items a l'estanteria
+     *
+     * @param prod Identificador del producte
+     * @param cantidad Unitata del producte a colocar
+     *
+     * @return Nombre d'unitats no colocades
+     *
+     * @pre Existeix el Producte identificat per prod_id
+     */
     unsigned int poner_items(const std::string& prod, unsigned int cantidad);
+
+    /**
+     * @brief Elimina items a l'estanteria
+     *
+     * @param prod Identificador del producte
+     * @param cantidad Unitata del producte
+     *
+     * @return Nombre d'unitats no eliminades, ja que no quedaven més unitats a
+     * l'estanteria
+     *
+     * @pre Existeix el Producte identificat per prod_id
+     */
     unsigned int quitar_items(const std::string& prod, unsigned int cantidad);
 
     /**

@@ -1,3 +1,7 @@
+/**
+ * @file magatzem.hh
+ * @brief Especificació de la classe Magatzem
+ */
 #ifndef MAGATZEM_H
 #define MAGATZEM_H
 
@@ -16,6 +20,9 @@ class Magatzem {
     Sala *root; ///< Sala principal, arrel, de l'arbre de sales.
     std::vector<Sala*> sala_map; ///< Relaciona l'id d'una sala amb la seva posició a la memoria.
 
+    /**
+     * @brief Inventari del magatzem
+     */
     Inventari inv;
 
     /**
@@ -174,6 +181,7 @@ class Magatzem {
      * @see Sala#consultar_pos
      */
     std::string consultar_pos(const unsigned int& sala_id, const unsigned int& f, const unsigned int& c) const;
+
     /**
      * @brief Consulta el nombre d'unitats d'un producte al magatzem
      *
