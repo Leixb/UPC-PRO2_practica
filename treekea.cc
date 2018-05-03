@@ -2,6 +2,20 @@
  * @file treekea.cc
  * @brief Programa principal (main)
  */
+
+/**
+ * @mainpage TreeKEA
+ *
+ * Aquest programa permet consultar i realitzar operacions sobre un magatzem
+ * estructurat en un arbre tal com descriu l'enunciat de la pràctica.
+ *
+ * S'implementen 3 classes:
+ * - Magatzem
+ * - Sala
+ * - Inventari
+ *
+ * Només es documenten els metodes públics.
+ */
 #include "magatzem.hh"
 #include "excepcions.hh"
 
