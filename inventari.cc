@@ -1,4 +1,5 @@
 /**
+ * @file inventari.cc
  * @brief Implementació de la classe Inventari
  */
 #include<map>

@@ -1,4 +1,5 @@
 /**
+ * @file sala.cc
  * @brief Implementació de la classe Sala
  */
 #include "sala.hh"

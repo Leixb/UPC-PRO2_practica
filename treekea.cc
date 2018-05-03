@@ -1,4 +1,5 @@
 /**
+ * @file treekea.cc
  * @brief Programa principal (main)
  */
 #include "magatzem.hh"
