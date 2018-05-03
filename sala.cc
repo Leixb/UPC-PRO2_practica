@@ -1,3 +1,6 @@
+/**
+ * @brief Implementació de la classe Sala
+ */
 #include "sala.hh"
 #include "excepcions.hh"
 

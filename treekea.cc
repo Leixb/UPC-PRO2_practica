@@ -1,3 +1,6 @@
+/**
+ * @brief Programa principal (main)
+ */
 #include "magatzem.hh"
 #include "excepcions.hh"
 

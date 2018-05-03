@@ -1,3 +1,6 @@
+/**
+ * @brief Implementació de la classe Magatzem
+ */
 #include "magatzem.hh"
 #include "excepcions.hh"
 

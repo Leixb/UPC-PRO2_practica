@@ -1,3 +1,6 @@
+/**
+ * @brief Implementació de la classe Inventari
+ */
 #include<map>
 #include<iostream>
 
