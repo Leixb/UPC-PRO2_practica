@@ -7,7 +7,7 @@ CPP = g++
 #CPPFLAGS = --std=c++11 -Wall
 CPPFLAGS = -D_JUDGE_ -D_GLIBCXX_DEBUG -O2 -Wall -Wextra -Werror -Wno-sign-compare -std=c++11
 
-.PHONY: debug clean test profile release
+.PHONY: debug clean test profile release upload
 
 program.exe: $(objects)
 	$(CPP) $(CPPFLAGS) -o program.exe $(objects)
@@ -39,3 +39,7 @@ clean:
 
 practica.tar: *.cc *.hh makefile
 	tar -cvf practica.tar makefile *.cc *.hh
+
+upload: test practica.tar
+	jutge upload --code X73158_ca --compiler MakePRO2 practica.tar --check
+
