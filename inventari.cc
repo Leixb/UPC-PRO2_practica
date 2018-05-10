@@ -17,7 +17,7 @@ unsigned int& Inventari::query(const string& prod_id) {
     if (prod_id == last_query_id) return *last_query;
     try {
         last_query = &contador.at(prod_id);
-    } catch (out_of_range) {
+    } catch (const out_of_range& e) {
         throw ProducteNoExistent();
     }
     last_query_id = prod_id;

@@ -1,32 +1,33 @@
-objects = treekea.o magatzem.o sala.o inventari.o
+objects = program.o magatzem.o sala.o inventari.o
 test_dir = jocs_prova
 
 DIFF = diff -y
 
 CPP = g++
-CPPFLAGS = --std=c++11 -Wall
+#CPPFLAGS = --std=c++11 -Wall
+CPPFLAGS = -D_JUDGE_ -D_GLIBCXX_DEBUG -O2 -Wall -Wextra -Werror -Wno-sign-compare -std=c++11
 
 .PHONY: debug clean test profile release
 
-TreeKEA: $(objects)
-	$(CPP) $(CPPFLAGS) -o TreeKEA $(objects)
+program.exe: $(objects)
+	$(CPP) $(CPPFLAGS) -o program.exe $(objects)
 
 %.o: %.cc
 	$(CPP) $(CPPFLAGS) -c $< -o $@
 
 debug: CPPFLAGS += -g -DDEBUG
-debug: clean TreeKEA
+debug: clean program.exe
 
 profile: CPPFLAGS += -pg
-profile: clean TreeKEA
-	./TreeKEA <$(test_dir)/sample.inp
-	gprof -a TreeKEA >analysis.txt
+profile: clean program.exe
+	./program.exe <$(test_dir)/sample.inp
+	gprof -a program.exe >analysis.txt
 
 release: CPPFLAGS+=-O3
-release: clean TreeKEA
+release: clean program.exe
 
-test: TreeKEA
-	./TreeKEA <$(test_dir)/sample.inp >$(test_dir)/test.out
+test: program.exe
+	./program.exe <$(test_dir)/sample.inp >$(test_dir)/test.out
 	$(DIFF) $(test_dir)/sample.cor $(test_dir)/test.out
 
 doc: doxyfile *.hh *.cc
@@ -35,3 +36,6 @@ doc: doxyfile *.hh *.cc
 
 clean:
 	-rm -r $(objects)
+
+practica.tar: *.cc *.hh makefile
+	tar -cvf practica.tar makefile *.cc *.hh

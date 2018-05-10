@@ -1,6 +1,7 @@
 *.o
-TreeKEA
 jocs_prova/test.out
 doc
 gmon.out
 analysis.txt
+program.exe
+practica.tar

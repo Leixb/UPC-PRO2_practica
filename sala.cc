@@ -51,6 +51,7 @@ void Sala::compactar() {
     //stable_sort(estant.begin(), estant.end(),
     stable_sort(estant.begin(), estant.begin()+last_pos,
         [](const string& a, const string& b)  -> bool  {
+            if (a == b) return false;
             if (b == "") return true;
             else if (a == "") return false;
             return true;
