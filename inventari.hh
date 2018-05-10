@@ -9,9 +9,6 @@
 class Inventari {
     std::map <std::string, unsigned int> contador;
 
-    unsigned int* last_query;
-    std::string last_query_id;
-
     /**
      * @brief Retorna una referencia al nombre d'unitats del producte
      * si exiteix
@@ -25,13 +22,6 @@ class Inventari {
     unsigned int& query(const std::string& prod_id);
 
     public:
-
-    
-    /**
-     * @brief Constructor de la classe Inventari
-     */
-    Inventari();
-
 
     /**
      * @brief Afegeix un producte a l'inventari.
