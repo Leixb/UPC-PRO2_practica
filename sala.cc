@@ -21,7 +21,7 @@ Sala* Sala::fill_esq() const {
 
 void Sala::crea_estanteria(const unsigned int& f, const unsigned int& c) {
     estant = vector<string>(f*c, "");
-    last_pos = elements = 0;
+    elements = 0;
     files = f, columnes = c;
 }
 
@@ -29,16 +29,14 @@ unsigned int Sala::poner_items(const string& prod_id, unsigned int cantidad) {
     for (unsigned int i = 0; i < files*columnes and cantidad; ++i)
         if (estant[i] == "")
             --cantidad, estant[i] = prod_id,
-            last_pos = max(last_pos, i),
             ++elements;
     return cantidad;
 }
 
 unsigned int Sala::quitar_items(const string& prod_id, unsigned int cantidad) {
-    for (unsigned int i = 0; i <= last_pos and cantidad; ++i) 
+    for (unsigned int i = 0; i < files*columnes and cantidad; ++i) 
         if (estant[i] == prod_id)
             estant[i] = "", --cantidad, --elements;
-    // last_pos ?
     return cantidad;
 }
 
@@ -49,7 +47,7 @@ string Sala::consultar_pos(const unsigned int& f, const unsigned int& c) const {
 
 void Sala::compactar() {
     //stable_sort(estant.begin(), estant.end(),
-    stable_sort(estant.begin(), estant.begin()+last_pos+1,
+    stable_sort(estant.begin(), estant.end(),
         [](const string& a, const string& b)  -> bool  {
             if (a == b) return false;
             if (b == "") return true;
@@ -57,11 +55,10 @@ void Sala::compactar() {
             return true;
         }
     );
-    last_pos = elements-1;
 }
 
 void Sala::reorganizar() {
-    sort(estant.begin(), estant.begin()+last_pos+1,
+    sort(estant.begin(), estant.end(),
         [](const string& a, const string& b) {
             if (a == "") return false;
             return b == "" or a < b;

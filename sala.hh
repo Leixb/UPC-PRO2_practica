@@ -17,8 +17,7 @@ class Sala {
     std::vector<std::string> estant;  ///< Productes de la sala en el seu ordre corresponent.
     unsigned int files, columnes;   ///< Dimensions de l'estanteria.
 
-    unsigned int last_pos,      ///< Ultima posició en la que es pot trobar un element no NULL.
-                 elements;      ///< Nombre de productes a la sala.
+    unsigned int elements;      ///< Nombre de productes a la sala.
 
     Sala *esquerra, ///< Apuntador a la Sala filla esquerra. *nullptr* si la sala actual es una fulla.
          *dreta;    ///< Apuntador a la Sala filla dreta. *nullptr* si la sala actual es una fulla.
@@ -88,8 +87,6 @@ class Sala {
     /**
      * @brief Elimina els espais entre elements de l'estanteria mantenint
      * l'ordre entre ells.
-     *
-     * @post elements = last_pos (no hi ha cap espai buit entre elements)
      */
     void compactar();
 
