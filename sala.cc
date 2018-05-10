@@ -47,14 +47,11 @@ string Sala::consultar_pos(const unsigned int& f, const unsigned int& c) const {
 
 void Sala::compactar() {
     //stable_sort(estant.begin(), estant.end(),
-    stable_sort(estant.begin(), estant.end(),
-        [](const string& a, const string& b)  -> bool  {
-            if (a == b) return false;
-            if (b == "") return true;
-            else if (a == "") return false;
-            return true;
-        }
-    );
+    vector<string> v;
+    for (const string& prod : estant)
+        if (prod != "") v.push_back(prod);
+    v.resize(files*columnes);
+    estant = v;
 }
 
 void Sala::reorganizar() {
