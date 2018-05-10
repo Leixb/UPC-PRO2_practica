@@ -49,7 +49,7 @@ string Sala::consultar_pos(const unsigned int& f, const unsigned int& c) const {
 
 void Sala::compactar() {
     //stable_sort(estant.begin(), estant.end(),
-    stable_sort(estant.begin(), estant.begin()+last_pos,
+    stable_sort(estant.begin(), estant.begin()+last_pos+1,
         [](const string& a, const string& b)  -> bool  {
             if (a == b) return false;
             if (b == "") return true;
@@ -57,6 +57,7 @@ void Sala::compactar() {
             return true;
         }
     );
+    last_pos = elements-1;
 }
 
 void Sala::reorganizar() {
@@ -71,7 +72,7 @@ void Sala::reorganizar() {
 void Sala::redimensionar(const unsigned int& f, const unsigned int& c) {
     if (f*c < elements) throw DimensionsInsuficients();
     compactar();
-    files = f, columnes = c, last_pos = elements;
+    files = f, columnes = c;
     estant.resize(files*columnes);
 }
 
