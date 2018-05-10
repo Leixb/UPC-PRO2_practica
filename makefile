@@ -41,5 +41,5 @@ practica.tar: *.cc *.hh makefile
 	tar -cvf practica.tar makefile *.cc *.hh
 
 upload: test practica.tar
-	jutge upload --code X73158_ca --compiler MakePRO2 practica.tar --check
+	jutge upload --code X73158_ca --compiler MakePRO2 practica.tar --check --annotation "Uploaded by jutge_cli. MD5: $(shell md5sum practica.tar) commit: $(shell git rev-parse HEAD)"
 
