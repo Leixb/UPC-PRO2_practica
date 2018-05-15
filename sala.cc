@@ -43,7 +43,9 @@ unsigned int Sala::quitar_items(const string& prod_id, unsigned int cantidad) {
 
 
 string Sala::consultar_pos(const unsigned int& f, const unsigned int& c) const {
-    return estant.at(f*columnes + c);
+    string prod_id = estant.at((files - f)*columnes + columnes - c);
+    if (Inventari::existeix_producte(prod_id)) return prod_id;
+    return "NULL";
 }
 
 void Sala::compactar() {
