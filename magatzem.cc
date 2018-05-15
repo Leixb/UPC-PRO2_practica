@@ -4,6 +4,7 @@
  */
 #include "magatzem.hh"
 #include "excepcions.hh"
+#include "inventari.hh"
 
 #include <map>
 #include <list>
@@ -44,21 +45,21 @@ void Magatzem::forma_arbre_post(Sala* pare) {
 }
 
 void Magatzem::poner_prod(const string& prod_id) {
-    inv.afegir_prod(prod_id);
+    Inventari::afegir_prod(prod_id);
 }
 
 void Magatzem::quitar_prod(const string& prod_id) {
-    inv.quitar_prod(prod_id);
+    Inventari::quitar_prod(prod_id);
 }
 
 unsigned int Magatzem::poner_items(const unsigned int& sala_id, const string& prod_id, const unsigned int& cantidad) {
     Sala* sala = sala_map.at(sala_id);
 
-    if (!inv.existeix_producte(prod_id)) throw ProducteNoExistent();
+    if (!Inventari::existeix_producte(prod_id)) throw ProducteNoExistent();
 
     const unsigned int sobrants = sala->poner_items(prod_id, cantidad);
 
-    inv.afegir_unitats(prod_id, cantidad - sobrants);
+    Inventari::afegir_unitats(prod_id, cantidad - sobrants);
 
     return sobrants;
 }
@@ -66,18 +67,18 @@ unsigned int Magatzem::poner_items(const unsigned int& sala_id, const string& pr
 unsigned int Magatzem::quitar_items(const unsigned int& sala_id, const string& prod_id, const unsigned int& cantidad) {
     Sala* sala = sala_map.at(sala_id);
 
-    if (!inv.existeix_producte(prod_id)) throw ProducteNoExistent();
+    if (!Inventari::existeix_producte(prod_id)) throw ProducteNoExistent();
 
     const unsigned int sobrants = sala->quitar_items(prod_id, cantidad);
 
-    inv.treure_unitats(prod_id, cantidad - sobrants);
+    Inventari::treure_unitats(prod_id, cantidad - sobrants);
 
     return sobrants;
 }
 
 unsigned int Magatzem::distribuir(const string& prod_id, const unsigned int& cantidad) {
 
-    if (!inv.existeix_producte(prod_id)) throw ProducteNoExistent();
+    if (!Inventari::existeix_producte(prod_id)) throw ProducteNoExistent();
 
     queue<pair<Sala*, int> > salas;
     salas.push({root, cantidad});
@@ -98,7 +99,7 @@ unsigned int Magatzem::distribuir(const string& prod_id, const unsigned int& can
         }
     }
 
-    inv.afegir_unitats(prod_id, cantidad - no_distribuidas);
+    Inventari::afegir_unitats(prod_id, cantidad - no_distribuidas);
 
     return no_distribuidas;
 }
@@ -116,7 +117,7 @@ void Magatzem::redimensionar(const unsigned int& sala_id, const unsigned int& f,
 }
 
 void Magatzem::inventario() {
-    inv.mostra();
+    Inventari::mostra();
 }
 
 void Magatzem::escribir(const unsigned int& sala_id) const {
@@ -128,5 +129,5 @@ string Magatzem::consultar_pos(const unsigned int& sala_id, const unsigned int& 
 }
 
 unsigned int Magatzem::consultar_prod(const string& prod_id) {
-    return inv.consultar_producte(prod_id);
+    return Inventari::consultar_producte(prod_id);
 }

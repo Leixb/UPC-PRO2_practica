@@ -4,6 +4,7 @@
  */
 #include "sala.hh"
 #include "excepcions.hh"
+#include "inventari.hh"
 
 #include<algorithm>
 #include<iostream>
@@ -27,7 +28,7 @@ void Sala::crea_estanteria(const unsigned int& f, const unsigned int& c) {
 
 unsigned int Sala::poner_items(const string& prod_id, unsigned int cantidad) {
     for (unsigned int i = 0; i < files*columnes and cantidad; ++i)
-        if (estant[i] == "")
+        if (!Inventari::existeix_producte(estant[i]))
             --cantidad, estant[i] = prod_id,
             ++elements;
     return cantidad;
@@ -49,7 +50,7 @@ void Sala::compactar() {
     //stable_sort(estant.begin(), estant.end(),
     vector<string> v;
     for (const string& prod : estant)
-        if (prod != "") v.push_back(prod);
+        if (Inventari::existeix_producte(prod)) v.push_back(prod);
     v.resize(files*columnes);
     estant = v;
 }
@@ -57,8 +58,8 @@ void Sala::compactar() {
 void Sala::reorganizar() {
     sort(estant.begin(), estant.end(),
         [](const string& a, const string& b) {
-            if (a == "") return false;
-            return b == "" or a < b;
+            if (!Inventari::existeix_producte(a)) return false;
+            return !Inventari::existeix_producte(b) or a < b;
         }
     );
 }
@@ -78,11 +79,10 @@ void Sala::escribir() const {
         for (unsigned int j = 0; j < columnes; ++j) {
             string prod = estant[i*columnes + j];
             cout << ' ';
-            if (prod == "") cout << "NULL";
-            else {
+            if (Inventari::existeix_producte(prod)) {
                 cout << prod;
                 ++inventori[prod], ++no_nulls;
-            }
+            } else cout << "NULL";
         }
         cout << endl;
     }

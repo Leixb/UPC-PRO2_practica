@@ -7,7 +7,7 @@
 #include<map>
 
 class Inventari {
-    std::map <std::string, unsigned int> contador;
+    static std::map <std::string, unsigned int> contador;
 
     /**
      * @brief Retorna una referencia al nombre d'unitats del producte
@@ -19,7 +19,9 @@ class Inventari {
      *
      * @throws ProducteNoExsitent() si el producte no existeix
      */
-    unsigned int& query(const std::string& prod_id);
+    static unsigned int& query(const std::string& prod_id);
+
+    Inventari() {}
 
     public:
 
@@ -34,7 +36,7 @@ class Inventari {
      * @post L'inventari conte una nova entrada per el producte especificat amb
      * 0 unitats
      */
-    void afegir_prod(const std::string prod_id);
+    static void afegir_prod(const std::string prod_id);
 
     /**
      * @brief Afegeix un producte a l'inventari
@@ -46,7 +48,7 @@ class Inventari {
      *
      * @post el producte queda eliminat de l'inventari
      */
-    void quitar_prod(const std::string prod_id);
+    static void quitar_prod(const std::string prod_id);
 
     /**
      * @brief Afegeix unitats de producte al inventari
@@ -59,7 +61,7 @@ class Inventari {
      * @thows ProducteNoExistent() si no existeix un producte amb
      * l'identificador especificat a l'estanteria
      */
-    void afegir_unitats(const std::string& prod_id, const unsigned int& unitats=1);
+    static void afegir_unitats(const std::string& prod_id, const unsigned int& unitats=1);
 
     /**
      * @brief Treu unitats de producte al inventari
@@ -75,7 +77,7 @@ class Inventari {
      * @thows ProducteNoExistent() si no existeix un producte amb
      * l'identificador especificat a l'estanteria
      */
-    void treure_unitats(const std::string& prod_id, const unsigned int& unitats=1);
+    static void treure_unitats(const std::string& prod_id, const unsigned int& unitats=1);
 
     /**
      * @brief Consulta el nombre d'unitats del producte al magatzem
@@ -84,7 +86,7 @@ class Inventari {
      *
      * @return  Unitats del producte a l'Inventari
      */
-    unsigned int consultar_producte(const std::string& prod_id);
+    static unsigned int consultar_producte(const std::string& prod_id);
 
     /**
      * @brief Comprova que el producte es troba a l'inventari
@@ -93,7 +95,7 @@ class Inventari {
      *
      * @return  true si el producte es troba a l'inventari, false altrament
      */
-    bool existeix_producte(const std::string& prod_id) const;
+    static bool existeix_producte(const std::string& prod_id);
 
     /**
      * @brief Mostra per std_out el contingut de l'inventari
@@ -102,6 +104,6 @@ class Inventari {
      * d'unitats que es troben a l'inventari. Els productes s'ordenen
      * alfabeticament per identificador
      */
-    void mostra() const;
+    static void mostra();
 };
 #endif /* ifndef INVENTARI_H */
