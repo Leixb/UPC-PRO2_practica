@@ -22,25 +22,26 @@ Sala* Sala::fill_esq() const {
 
 void Sala::crea_estanteria(const unsigned int& f, const unsigned int& c) {
     estant = vector<string>(f*c, "");
-    elements = 0;
     files = f, columnes = c;
 }
 
 unsigned int Sala::poner_items(const string& prod_id, unsigned int cantidad) {
-    for (unsigned int i = 0; i < files*columnes and cantidad; ++i)
+    unsigned int afegits = 0;
+    for (unsigned int i = 0; i < files*columnes and (cantidad > afegits); ++i)
         if (!Inventari::existeix_producte(estant[i]))
-            --cantidad, estant[i] = prod_id,
-            ++elements;
-    return cantidad;
+            estant[i] = prod_id, ++afegits;
+    inv.afegir_unitats(prod_id, afegits);
+    return cantidad-afegits;
 }
 
 unsigned int Sala::quitar_items(const string& prod_id, unsigned int cantidad) {
-    for (unsigned int i = 0; i < files*columnes and cantidad; ++i) 
+    int eliminats = 0;
+    for (unsigned int i = 0; i < files*columnes and cantidad - eliminats; ++i)
         if (estant[i] == prod_id)
-            estant[i] = "", --cantidad, --elements;
-    return cantidad;
+            estant[i] = "", ++eliminats;
+    inv.treure_unitats(prod_id, eliminats);
+    return cantidad - eliminats;
 }
-
 
 string Sala::consultar_pos(const unsigned int& f, const unsigned int& c) const {
     string prod_id = estant.at((files - f)*columnes + c-1);
@@ -66,37 +67,24 @@ void Sala::reorganizar() {
     );
 }
 
-void Sala::clean() {
-    elements = 0;
-    for (unsigned int i = 0; i < files*columnes; ++i)
-        if (Inventari::existeix_producte(estant[i]))  ++elements;
-        else estant[i] = "NULL";
-}
-
 void Sala::redimensionar(const unsigned int& f, const unsigned int& c) {
-    clean();
-    if (f*c < elements) throw DimensionsInsuficients();
+    if (f*c < inv.total_productes()) throw DimensionsInsuficients();
     compactar();
     files = f, columnes = c;
     estant.resize(files*columnes);
 }
 
 void Sala::escribir() const {
-    unsigned int no_nulls = 0;
-    map<string, unsigned int> inventori;
     for (unsigned int i = files-1; i < files; --i) {
         cout << ' ';
         for (unsigned int j = 0; j < columnes; ++j) {
             string prod = estant[i*columnes + j];
             cout << ' ';
-            if (Inventari::existeix_producte(prod)) {
-                cout << prod;
-                ++inventori[prod], ++no_nulls;
-            } else cout << "NULL";
+            if (Inventari::existeix_producte(prod)) cout << prod;
+            else cout << "NULL";
         }
         cout << endl;
     }
-    cout << "  " << no_nulls << endl;
-    for (const pair<string, int>& prod : inventori)
-        cout << "  " << prod.first << ' ' << prod.second << endl;
+    cout << "  " << inv.total_productes() << endl;
+    inv.mostra(false);
 }

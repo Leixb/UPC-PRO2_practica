@@ -6,6 +6,7 @@
 #define MAGATZEM_H
 
 #include "sala.hh"
+#include "inventari.hh"
 
 #include <map>
 #include <list>
@@ -18,6 +19,8 @@ class Magatzem {
     unsigned int n_sales; ///< Nombre de sales al magatzem.
     Sala *root; ///< Sala principal, arrel, de l'arbre de sales.
     std::vector<Sala*> sala_map; ///< Relaciona l'id d'una sala amb la seva posició a la memoria.
+
+    Inventari inv;
 
     /**
      * @brief Llegeix per std_in un arbre binari en post ordre i l'associa a

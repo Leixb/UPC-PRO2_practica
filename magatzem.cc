@@ -46,6 +46,7 @@ void Magatzem::forma_arbre_post(Sala* pare) {
 
 void Magatzem::poner_prod(const string& prod_id) {
     Inventari::afegir_prod(prod_id);
+    inv.afegir_unitats(prod_id, 0);
 }
 
 void Magatzem::quitar_prod(const string& prod_id) {
@@ -59,7 +60,7 @@ unsigned int Magatzem::poner_items(const unsigned int& sala_id, const string& pr
 
     const unsigned int sobrants = sala->poner_items(prod_id, cantidad);
 
-    Inventari::afegir_unitats(prod_id, cantidad - sobrants);
+    inv.afegir_unitats(prod_id, cantidad - sobrants);
 
     return sobrants;
 }
@@ -71,7 +72,7 @@ unsigned int Magatzem::quitar_items(const unsigned int& sala_id, const string& p
 
     const unsigned int sobrants = sala->quitar_items(prod_id, cantidad);
 
-    Inventari::treure_unitats(prod_id, cantidad - sobrants);
+    inv.treure_unitats(prod_id, cantidad - sobrants);
 
     return sobrants;
 }
@@ -99,7 +100,7 @@ unsigned int Magatzem::distribuir(const string& prod_id, const unsigned int& can
         }
     }
 
-    Inventari::afegir_unitats(prod_id, cantidad - no_distribuidas);
+    inv.afegir_unitats(prod_id, cantidad - no_distribuidas);
 
     return no_distribuidas;
 }
@@ -117,7 +118,7 @@ void Magatzem::redimensionar(const unsigned int& sala_id, const unsigned int& f,
 }
 
 void Magatzem::inventario() {
-    Inventari::mostra();
+    inv.mostra();
 }
 
 void Magatzem::escribir(const unsigned int& sala_id) const {
@@ -129,5 +130,5 @@ string Magatzem::consultar_pos(const unsigned int& sala_id, const unsigned int& 
 }
 
 unsigned int Magatzem::consultar_prod(const string& prod_id) {
-    return Inventari::consultar_producte(prod_id);
+    return inv.consultar_producte(prod_id);
 }

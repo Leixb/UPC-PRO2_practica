@@ -8,6 +8,8 @@
 #include<vector>
 #include<string>
 
+#include"inventari.hh"
+
 /**
  * @brief Sala del magatzem
  */
@@ -17,10 +19,10 @@ class Sala {
     std::vector<std::string> estant;  ///< Productes de la sala en el seu ordre corresponent.
     unsigned int files, columnes;   ///< Dimensions de l'estanteria.
 
-    unsigned int elements;      ///< Nombre de productes a la sala.
-
     Sala *esquerra, ///< Apuntador a la Sala filla esquerra. *nullptr* si la sala actual es una fulla.
          *dreta;    ///< Apuntador a la Sala filla dreta. *nullptr* si la sala actual es una fulla.
+
+    mutable Inventari inv;
 
     public:
 
@@ -130,9 +132,6 @@ class Sala {
      * l'estanteria no es mostra.
      */
     void escribir() const;
-
-    void clean();
-
 };
 
 #endif // ifndef SALA_H
