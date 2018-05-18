@@ -66,7 +66,15 @@ void Sala::reorganizar() {
     );
 }
 
+void Sala::clean() {
+    elements = 0;
+    for (unsigned int i = 0; i < files*columnes; ++i)
+        if (Inventari::existeix_producte(estant[i]))  ++elements;
+        else estant[i] = "NULL";
+}
+
 void Sala::redimensionar(const unsigned int& f, const unsigned int& c) {
+    clean();
     if (f*c < elements) throw DimensionsInsuficients();
     compactar();
     files = f, columnes = c;

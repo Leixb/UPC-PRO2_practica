@@ -131,6 +131,8 @@ class Sala {
      */
     void escribir() const;
 
+    void clean();
+
 };
 
 #endif // ifndef SALA_H
