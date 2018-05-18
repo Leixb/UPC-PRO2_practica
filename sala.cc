@@ -50,7 +50,6 @@ string Sala::consultar_pos(const unsigned int& f, const unsigned int& c) const {
 }
 
 void Sala::compactar() {
-    //stable_sort(estant.begin(), estant.end(),
     vector<string> v;
     for (const string& prod : estant)
         if (Inventari::existeix_producte(prod)) v.push_back(prod);
