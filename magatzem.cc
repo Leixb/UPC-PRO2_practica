@@ -50,6 +50,8 @@ void Magatzem::poner_prod(const string& prod_id) {
 }
 
 void Magatzem::quitar_prod(const string& prod_id) {
+    if (inv.consultar_producte(prod_id))
+        throw ProducteNoExistent(); // TODO
     Inventari::quitar_prod(prod_id);
 }
 
