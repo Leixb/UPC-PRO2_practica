@@ -21,6 +21,12 @@ class ProducteJaExistent : public ExpectedError {
     }
 };
 
+class UnitatsAlMagatzem : public ExpectedError {
+    virtual const char* what() const throw() {
+        return "Encara hi ha productes amb l'identificador al magatzem";
+    }
+};
+
 class UnitatsInsuficients : public ExpectedError {
     virtual const char* what() const throw() {
         return "No es poden eliminar mes unitats";
