@@ -13,9 +13,12 @@ using namespace std;
 unordered_map <string, bool> Inventari::productes;
 
 void Inventari::afegir_prod(const string& prod_id) {
-    if (Inventari::existeix_producte(prod_id))
-        throw ProducteJaExistent();
-    productes[prod_id] = true;
+    const pair<unordered_map<string, bool>::iterator, bool> res = productes.emplace(prod_id, true);
+    if (!res.second) {
+        if (res.first->second)
+            throw ProducteJaExistent();
+        res.first->second = true;
+    }
 }
 
 void Inventari::quitar_prod(const string& prod_id) {
