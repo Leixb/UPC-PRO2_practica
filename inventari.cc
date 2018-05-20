@@ -6,29 +6,21 @@
 #include<iostream>
 
 #include"excepcions.hh"
-
 #include"inventari.hh"
 
 using namespace std;
 
 std::unordered_map <std::string, bool> Inventari::productes;
-size_t Inventari::estat_productes = 0;
 
 void Inventari::afegir_prod(const string prod_id) {
     if (Inventari::existeix_producte(prod_id))
         throw ProducteJaExistent();
-
-    ++estat_productes;
-
     productes[prod_id] = true;
 }
 
 void Inventari::quitar_prod(const string prod_id) {
     if (!Inventari::existeix_producte(prod_id))
         throw ProducteNoExistent();
-
-    ++estat_productes;
-
     productes[prod_id] = false;
 }
 
@@ -57,12 +49,6 @@ void Inventari::mostra(bool show_zeros) const {
 }
 
 unsigned int Inventari::total_productes() {
-    if (estat_instancia != estat_productes) {
-        elements = 0;
-        for (const auto& element : Inventari::contador)
-            if (Inventari::existeix_producte(element.first)) elements += element.second;
-    }
-    estat_instancia = estat_productes;
     return elements;
 }
 

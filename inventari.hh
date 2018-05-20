@@ -13,8 +13,7 @@ class Inventari {
 
     static std::unordered_map <std::string, bool> productes;
 
-    static size_t estat_productes;
-    size_t estat_instancia, elements;
+    size_t elements;
 
     public:
 
