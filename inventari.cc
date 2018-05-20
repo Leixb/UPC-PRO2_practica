@@ -41,11 +41,9 @@ unsigned int Inventari::consultar_producte(const string& prod_id) {
 }
 
 void Inventari::mostra(bool show_zeros) const {
-    for (const auto& element : Inventari::contador) {
-        if (Inventari::existeix_producte(element.first) and (show_zeros or element.second)) {
+    for (const auto& element : Inventari::contador)
+        if (Inventari::existeix_producte(element.first) and (show_zeros or element.second))
             cout << "  " << element.first << ' ' << element.second << endl;
-        }
-    }
 }
 
 unsigned int Inventari::total_productes() {

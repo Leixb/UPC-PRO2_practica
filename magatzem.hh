@@ -23,16 +23,16 @@ class Magatzem {
     Inventari inv;
 
     /**
-     * @brief Llegeix per std_in un arbre binari en post ordre i l'associa a
+     * @brief Llegeix per std_in un arbre binari en preordre i l'associa a
      * pare
      *
      * @param pare node al que s'acopla l'arbre llegit
      *
-     * @pre a std_in trobem un arbre binari en post ordre en els quals 0
+     * @pre a std_in trobem un arbre binari en preordre en els quals 0
      * marquen les fulles i els nodes son naturals entre 1 i n_sales inclos
      * sense repetir
      */
-    void forma_arbre_post(Sala* pare);
+    void forma_arbre_pre(Sala* pare);
 
     public:
 

@@ -21,7 +21,7 @@ void Magatzem::inicialitza() {
     root = new Sala();
     sala_map[n] = root;
 
-    forma_arbre_post(root);
+    forma_arbre_pre(root);
 
     for (unsigned int i = 1; i <= n_sales; ++i) {
         unsigned int f, c;
@@ -30,16 +30,16 @@ void Magatzem::inicialitza() {
     }
 }
 
-void Magatzem::forma_arbre_post(Sala* pare) {
+void Magatzem::forma_arbre_pre(Sala* pare) {
     unsigned int esq, dre;
     cin >> esq;
     if (esq)
-        forma_arbre_post(
+        forma_arbre_pre(
             sala_map[esq] = pare->esquerra = new Sala()
         );
     cin >> dre;
     if (dre)
-        forma_arbre_post(
+        forma_arbre_pre(
             sala_map[dre] = pare->dreta = new Sala()
         );
 }
