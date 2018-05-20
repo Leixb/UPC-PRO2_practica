@@ -71,7 +71,7 @@ class Sala {
      *
      * @pre Existeix el Producte identificat per prod_id
      */
-    unsigned int poner_items(const std::string& prod, unsigned int cantidad);
+    unsigned int poner_items(const std::string& prod, const unsigned int& cantidad);
 
     /**
      * @brief Elimina items a l'estanteria
@@ -84,7 +84,7 @@ class Sala {
      *
      * @pre Existeix el Producte identificat per prod_id
      */
-    unsigned int quitar_items(const std::string& prod, unsigned int cantidad);
+    unsigned int quitar_items(const std::string& prod, const unsigned int& cantidad);
 
     /**
      * @brief Elimina els espais entre elements de l'estanteria mantenint
