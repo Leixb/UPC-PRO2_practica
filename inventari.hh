@@ -6,12 +6,12 @@
 #define INVENTARI_H
 
 #include<map>
-#include<unordered_map>
+#include<unordered_set>
 
 class Inventari {
     std::map <std::string, unsigned int> contador;
 
-    static std::unordered_map <std::string, bool> productes;
+    static std::unordered_set <std::string> productes;
 
     size_t elements;
 

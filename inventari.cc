@@ -7,18 +7,15 @@
 
 #include<iostream>
 #include<map>
+#include<unordered_set>
 
 using namespace std;
 
-unordered_map <string, bool> Inventari::productes;
+unordered_set <string> Inventari::productes;
 
 void Inventari::afegir_prod(const string& prod_id) {
-    const pair<unordered_map<string, bool>::iterator, bool> res = productes.emplace(prod_id, true);
-    if (!res.second) {
-        if (res.first->second)
-            throw ProducteJaExistent();
-        res.first->second = true;
-    }
+    if (!productes.emplace(prod_id).second)
+        throw ProducteJaExistent();
 }
 
 void Inventari::quitar_prod(const string& prod_id) {
@@ -57,5 +54,5 @@ unsigned int Inventari::total_productes() const {
 }
 
 bool Inventari::existeix_producte(const string& prod_id) {
-    return productes[prod_id];
+    return productes.find(prod_id) != productes.end();
 }
