@@ -60,3 +60,7 @@ unsigned int Inventari::total_productes() const {
 bool Inventari::existeix_producte(const string& prod_id) {
     return productes.find(prod_id) != productes.end();
 }
+
+map <string, unsigned int>& Inventari::data() {
+    return contador;
+};

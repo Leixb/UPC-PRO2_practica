@@ -87,5 +87,7 @@ class Inventari {
      */
     void mostra(const bool& show_zeros=true) const;
     unsigned int total_productes() const;
+
+    std::map <std::string, unsigned int>& data();
 };
 #endif /* ifndef INVENTARI_H */

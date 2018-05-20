@@ -75,13 +75,12 @@ void Sala::compactar() {
 }
 
 void Sala::reorganizar() {
-    sort(estant.begin(), estant.end(),
-        [](const string& a, const string& b) {
-            if (!Inventari::existeix_producte(a))
-                return false;
-            return !Inventari::existeix_producte(b) or a < b;
-        }
-    );
+    vector<string> v;
+    v.reserve(files*columnes);
+    for ( auto prod : inv.data())
+        for (unsigned int i = 0; i < prod.second; ++i) v.push_back(prod.first);
+    v.resize(files*columnes);
+    estant = v;
     last_pos = inv.total_productes();
     forats = priority_queue<unsigned int, vector<unsigned int>, greater<unsigned int> > ();
 }
