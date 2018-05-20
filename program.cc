@@ -124,14 +124,7 @@ int main() {
                 cerr << e.what() << endl;
             #endif //DEBUG
 
-        } /*catch (const out_of_range& e) {
-            OUTPUT("error");
-            cerr << "Unexpected error:" << endl << e.what() << endl;
-        } catch (...) {
-            OUTPUT("error");
-            cerr << "Unexpected error" << endl;
-        }*/
-
+        }
     }
     cout << "fin" << endl;
 }
