@@ -5,11 +5,11 @@
 #ifndef MAGATZEM_H
 #define MAGATZEM_H
 
-#include "sala.hh"
 #include "inventari.hh"
+#include "sala.hh"
 
-#include <map>
 #include <list>
+#include <map>
 #include <vector>
 
 /**

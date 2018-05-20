@@ -2,14 +2,15 @@
  * @file sala.cc
  * @brief Implementació de la classe Sala
  */
-#include "sala.hh"
 #include "excepcions.hh"
 #include "inventari.hh"
+#include "sala.hh"
 
 #include<algorithm>
 #include<iostream>
-#include<vector>
 #include<map>
+#include<vector>
+
 using namespace std;
 
 Sala* Sala::fill_dre() const {

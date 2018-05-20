@@ -16,10 +16,11 @@
  *
  * Només es documenten els metodes públics.
  */
-#include "magatzem.hh"
 #include "excepcions.hh"
+#include "magatzem.hh"
 
 #include <iostream>
+
 using namespace std;
 
 #define SPC "  "

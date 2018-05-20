@@ -3,7 +3,7 @@
  * @brief Especificació de les excepcions
  */
 #ifndef EXCEPCIONS_H
-#define EXCEPCIONS_H value
+#define EXCEPCIONS_H
 
 #include<exception>
 

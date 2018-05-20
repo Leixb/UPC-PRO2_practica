@@ -5,10 +5,10 @@
 #ifndef SALA_H
 #define SALA_H
 
-#include<vector>
-#include<string>
-
 #include"inventari.hh"
+
+#include<string>
+#include<vector>
 
 /**
  * @brief Sala del magatzem

@@ -2,11 +2,11 @@
  * @file inventari.cc
  * @brief Implementació de la classe Inventari
  */
-#include<map>
-#include<iostream>
-
 #include"excepcions.hh"
 #include"inventari.hh"
+
+#include<iostream>
+#include<map>
 
 using namespace std;
 

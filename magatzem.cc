@@ -2,14 +2,15 @@
  * @file magatzem.cc
  * @brief Implementació de la classe Magatzem
  */
-#include "magatzem.hh"
 #include "excepcions.hh"
 #include "inventari.hh"
+#include "magatzem.hh"
 
-#include <map>
-#include <list>
-#include <queue>
 #include <iostream>
+#include <list>
+#include <map>
+#include <queue>
+
 using namespace std;
 
 void Magatzem::inicialitza() {
