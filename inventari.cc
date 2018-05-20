@@ -22,9 +22,8 @@ void Inventari::afegir_prod(const string& prod_id) {
 }
 
 void Inventari::quitar_prod(const string& prod_id) {
-    if (!Inventari::existeix_producte(prod_id))
+    if (!productes.erase(prod_id))
         throw ProducteNoExistent();
-    productes[prod_id] = false;
 }
 
 void Inventari::afegir_unitats(const string& prod_id, const unsigned int& unitats) {
