@@ -46,8 +46,9 @@ unsigned int Sala::poner_items(const string& prod_id, const unsigned int& cantid
 }
 
 unsigned int Sala::quitar_items(const string& prod_id, const unsigned int& cantidad) {
+    const unsigned int unitats_eliminables = min(inv.consultar_producte(prod_id), cantidad);
     unsigned int eliminats = 0;
-    for (unsigned int i = 0; i < last_pos and cantidad > eliminats; ++i)
+    for (unsigned int i = 0; i < last_pos and unitats_eliminables > eliminats; ++i)
         if (estant[i] == prod_id) {
             estant[i] = "", ++eliminats;
             forats.push(i);

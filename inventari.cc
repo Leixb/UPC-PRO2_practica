@@ -39,7 +39,11 @@ void Inventari::treure_unitats(const string& prod_id, const unsigned int& unitat
 unsigned int Inventari::consultar_producte(const string& prod_id) const {
     if (!Inventari::existeix_producte(prod_id))
         throw ProducteNoExistent();
-    return contador.at(prod_id);
+    try {
+        return contador.at(prod_id);
+    } catch (const std::out_of_range& e) {
+        return 0;
+    }
 }
 
 void Inventari::mostra(const bool& show_zeros) const {
