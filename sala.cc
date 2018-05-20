@@ -66,6 +66,7 @@ string Sala::consultar_pos(const unsigned int& f, const unsigned int& c) const {
 
 void Sala::compactar() {
     vector<string> v;
+    v.reserve(files*columnes);
     for (const string& prod : estant)
         if (Inventari::existeix_producte(prod)) v.push_back(prod);
     v.resize(files*columnes);
