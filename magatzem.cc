@@ -2,13 +2,15 @@
  * @file magatzem.cc
  * @brief Implementació de la classe Magatzem
  */
-#include "magatzem.hh"
 #include "excepcions.hh"
+#include "inventari.hh"
+#include "magatzem.hh"
 
-#include <map>
-#include <list>
-#include <queue>
 #include <iostream>
+#include <list>
+#include <map>
+#include <queue>
+
 using namespace std;
 
 void Magatzem::inicialitza() {
@@ -20,7 +22,7 @@ void Magatzem::inicialitza() {
     root = new Sala();
     sala_map[n] = root;
 
-    forma_arbre_post(root);
+    forma_arbre_pre(root);
 
     for (unsigned int i = 1; i <= n_sales; ++i) {
         unsigned int f, c;
@@ -29,32 +31,36 @@ void Magatzem::inicialitza() {
     }
 }
 
-void Magatzem::forma_arbre_post(Sala* pare) {
+void Magatzem::forma_arbre_pre(Sala* pare) {
     unsigned int esq, dre;
     cin >> esq;
     if (esq)
-        forma_arbre_post(
+        forma_arbre_pre(
             sala_map[esq] = pare->esquerra = new Sala()
         );
     cin >> dre;
     if (dre)
-        forma_arbre_post(
+        forma_arbre_pre(
             sala_map[dre] = pare->dreta = new Sala()
         );
 }
 
 void Magatzem::poner_prod(const string& prod_id) {
-    inv.afegir_prod(prod_id);
+    Inventari::afegir_prod(prod_id);
+    inv.afegir_unitats(prod_id, 0);
 }
 
 void Magatzem::quitar_prod(const string& prod_id) {
-    inv.quitar_prod(prod_id);
+    if (inv.consultar_producte(prod_id))
+        throw UnitatsAlMagatzem();
+    Inventari::quitar_prod(prod_id);
 }
 
 unsigned int Magatzem::poner_items(const unsigned int& sala_id, const string& prod_id, const unsigned int& cantidad) {
     Sala* sala = sala_map.at(sala_id);
 
-    if (!inv.existeix_producte(prod_id)) throw ProducteNoExistent();
+    if (!Inventari::existeix_producte(prod_id))
+        throw ProducteNoExistent();
 
     const unsigned int sobrants = sala->poner_items(prod_id, cantidad);
 
@@ -66,7 +72,8 @@ unsigned int Magatzem::poner_items(const unsigned int& sala_id, const string& pr
 unsigned int Magatzem::quitar_items(const unsigned int& sala_id, const string& prod_id, const unsigned int& cantidad) {
     Sala* sala = sala_map.at(sala_id);
 
-    if (!inv.existeix_producte(prod_id)) throw ProducteNoExistent();
+    if (!Inventari::existeix_producte(prod_id))
+        throw ProducteNoExistent();
 
     const unsigned int sobrants = sala->quitar_items(prod_id, cantidad);
 
@@ -77,7 +84,8 @@ unsigned int Magatzem::quitar_items(const unsigned int& sala_id, const string& p
 
 unsigned int Magatzem::distribuir(const string& prod_id, const unsigned int& cantidad) {
 
-    if (!inv.existeix_producte(prod_id)) throw ProducteNoExistent();
+    if (!Inventari::existeix_producte(prod_id))
+        throw ProducteNoExistent();
 
     queue<pair<Sala*, int> > salas;
     salas.push({root, cantidad});

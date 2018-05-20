@@ -2,13 +2,15 @@
  * @file sala.cc
  * @brief Implementació de la classe Sala
  */
-#include "sala.hh"
 #include "excepcions.hh"
+#include "inventari.hh"
+#include "sala.hh"
 
 #include<algorithm>
 #include<iostream>
-#include<vector>
 #include<map>
+#include<vector>
+
 using namespace std;
 
 Sala* Sala::fill_dre() const {
@@ -21,78 +23,87 @@ Sala* Sala::fill_esq() const {
 
 void Sala::crea_estanteria(const unsigned int& f, const unsigned int& c) {
     estant = vector<string>(f*c, "");
-    last_pos = elements = 0;
-    files = f, columnes = c;
+    files = f, columnes = c, last_pos = 0;
 }
 
-unsigned int Sala::poner_items(const string& prod_id, unsigned int cantidad) {
-    for (unsigned int i = 0; i < files*columnes and cantidad; ++i)
-        if (estant[i] == "")
-            --cantidad, estant[i] = prod_id,
-            last_pos = max(last_pos, i),
-            ++elements;
-    return cantidad;
+unsigned int Sala::poner_items(const string& prod_id, const unsigned int& cantidad) {
+    unsigned int afegits = 0;
+
+    while (!forats.empty() and cantidad > afegits) {
+        estant[forats.top()] = prod_id, ++afegits;
+        forats.pop();
+    }
+
+    unsigned int i;
+    for (i = last_pos; i < files*columnes and cantidad > afegits; ++i)
+        estant[i] = prod_id, ++afegits;
+
+    last_pos = i;
+
+    inv.afegir_unitats(prod_id, afegits);
+
+    return cantidad - afegits;
 }
 
-unsigned int Sala::quitar_items(const string& prod_id, unsigned int cantidad) {
-    for (unsigned int i = 0; i <= last_pos and cantidad; ++i) 
-        if (estant[i] == prod_id)
-            estant[i] = "", --cantidad, --elements;
-    // last_pos ?
-    return cantidad;
+unsigned int Sala::quitar_items(const string& prod_id, const unsigned int& cantidad) {
+    const unsigned int unitats_eliminables = min(inv.consultar_producte(prod_id), cantidad);
+    unsigned int eliminats = 0;
+    for (unsigned int i = 0; i < last_pos and unitats_eliminables > eliminats; ++i)
+        if (estant[i] == prod_id) {
+            estant[i] = "", ++eliminats;
+            forats.push(i);
+        }
+    inv.treure_unitats(prod_id, eliminats);
+    return cantidad - eliminats;
 }
-
 
 string Sala::consultar_pos(const unsigned int& f, const unsigned int& c) const {
-    return estant.at(f*columnes + c);
+    string prod_id = estant.at((files - f)*columnes + c-1);
+    if (Inventari::existeix_producte(prod_id))
+        return prod_id;
+    return "NULL";
 }
 
 void Sala::compactar() {
-    //stable_sort(estant.begin(), estant.end(),
-    stable_sort(estant.begin(), estant.begin()+last_pos+1,
-        [](const string& a, const string& b)  -> bool  {
-            if (a == b) return false;
-            if (b == "") return true;
-            else if (a == "") return false;
-            return true;
-        }
-    );
-    last_pos = elements-1;
+    vector<string> v;
+    v.reserve(files*columnes);
+    for (const string& prod : estant)
+        if (Inventari::existeix_producte(prod)) v.push_back(prod);
+    v.resize(files*columnes);
+    forats = priority_queue<unsigned int, vector<unsigned int>, greater<unsigned int> > ();
+    estant = v, last_pos = inv.total_productes();
 }
 
 void Sala::reorganizar() {
-    sort(estant.begin(), estant.begin()+last_pos+1,
-        [](const string& a, const string& b) {
-            if (a == "") return false;
-            return b == "" or a < b;
-        }
-    );
+    vector<string> v;
+    v.reserve(files*columnes);
+    for ( auto prod : inv.data())
+        for (unsigned int i = 0; i < prod.second; ++i) v.push_back(prod.first);
+    v.resize(files*columnes);
+    estant = v;
+    last_pos = inv.total_productes();
+    forats = priority_queue<unsigned int, vector<unsigned int>, greater<unsigned int> > ();
 }
 
 void Sala::redimensionar(const unsigned int& f, const unsigned int& c) {
-    if (f*c < elements) throw DimensionsInsuficients();
+    if (f*c < inv.total_productes())
+        throw DimensionsInsuficients();
     compactar();
     files = f, columnes = c;
     estant.resize(files*columnes);
 }
 
 void Sala::escribir() const {
-    unsigned int no_nulls = 0;
-    map<string, unsigned int> inventori;
     for (unsigned int i = files-1; i < files; --i) {
         cout << ' ';
         for (unsigned int j = 0; j < columnes; ++j) {
             string prod = estant[i*columnes + j];
             cout << ' ';
-            if (prod == "") cout << "NULL";
-            else {
-                cout << prod;
-                ++inventori[prod], ++no_nulls;
-            }
+            if (Inventari::existeix_producte(prod)) cout << prod;
+            else cout << "NULL";
         }
         cout << endl;
     }
-    cout << "  " << no_nulls << endl;
-    for (const pair<string, int>& prod : inventori)
-        cout << "  " << prod.first << ' ' << prod.second << endl;
+    cout << "  " << inv.total_productes() << endl;
+    inv.mostra(false);
 }

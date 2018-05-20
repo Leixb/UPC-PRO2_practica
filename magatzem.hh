@@ -5,11 +5,11 @@
 #ifndef MAGATZEM_H
 #define MAGATZEM_H
 
-#include "sala.hh"
 #include "inventari.hh"
+#include "sala.hh"
 
-#include <map>
 #include <list>
+#include <map>
 #include <vector>
 
 /**
@@ -20,22 +20,19 @@ class Magatzem {
     Sala *root; ///< Sala principal, arrel, de l'arbre de sales.
     std::vector<Sala*> sala_map; ///< Relaciona l'id d'una sala amb la seva posició a la memoria.
 
-    /**
-     * @brief Inventari del magatzem
-     */
     Inventari inv;
 
     /**
-     * @brief Llegeix per std_in un arbre binari en post ordre i l'associa a
+     * @brief Llegeix per std_in un arbre binari en preordre i l'associa a
      * pare
      *
      * @param pare node al que s'acopla l'arbre llegit
      *
-     * @pre a std_in trobem un arbre binari en post ordre en els quals 0
+     * @pre a std_in trobem un arbre binari en preordre en els quals 0
      * marquen les fulles i els nodes son naturals entre 1 i n_sales inclos
      * sense repetir
      */
-    void forma_arbre_post(Sala* pare);
+    void forma_arbre_pre(Sala* pare);
 
     public:
 

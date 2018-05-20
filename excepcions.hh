@@ -3,7 +3,7 @@
  * @brief Especificació de les excepcions
  */
 #ifndef EXCEPCIONS_H
-#define EXCEPCIONS_H value
+#define EXCEPCIONS_H
 
 #include<exception>
 
@@ -18,6 +18,12 @@ class ProducteNoExistent : public ExpectedError {
 class ProducteJaExistent : public ExpectedError {
     virtual const char* what() const throw() {
         return "No es pot afegir un producte, l'id ja existeix";
+    }
+};
+
+class UnitatsAlMagatzem : public ExpectedError {
+    virtual const char* what() const throw() {
+        return "Encara hi ha productes amb l'identificador al magatzem";
     }
 };
 

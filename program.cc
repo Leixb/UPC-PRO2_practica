@@ -16,10 +16,11 @@
  *
  * Només es documenten els metodes públics.
  */
-#include "magatzem.hh"
 #include "excepcions.hh"
+#include "magatzem.hh"
 
 #include <iostream>
+
 using namespace std;
 
 #define SPC "  "
@@ -124,14 +125,7 @@ int main() {
                 cerr << e.what() << endl;
             #endif //DEBUG
 
-        } catch (const out_of_range& e) {
-            OUTPUT("error");
-            cerr << "Unexpected error:" << endl << e.what() << endl;
-        } catch (...) {
-            OUTPUT("error");
-            cerr << "Unexpected error" << endl;
         }
-
     }
     cout << "fin" << endl;
 }

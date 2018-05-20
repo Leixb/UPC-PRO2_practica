@@ -2,62 +2,65 @@
  * @file inventari.cc
  * @brief Implementació de la classe Inventari
  */
-#include<map>
-#include<iostream>
-
 #include"excepcions.hh"
-
 #include"inventari.hh"
+
+#include<iostream>
+#include<map>
+#include<unordered_set>
 
 using namespace std;
 
-Inventari::Inventari(): last_query(nullptr), last_query_id("NULL") {}
+unordered_set <string> Inventari::productes;
 
-unsigned int& Inventari::query(const string& prod_id) {
-    if (prod_id == last_query_id) return *last_query;
-    try {
-        last_query = &contador.at(prod_id);
-    } catch (const out_of_range& e) {
-        throw ProducteNoExistent();
-    }
-    last_query_id = prod_id;
-    return *last_query;
-}
-
-void Inventari::afegir_prod(const string prod_id) {
-    if (contador.find(prod_id)!= contador.end())
+void Inventari::afegir_prod(const string& prod_id) {
+    if (!productes.emplace(prod_id).second)
         throw ProducteJaExistent();
-
-    contador[prod_id] = 0;
 }
 
-void Inventari::quitar_prod(const string prod_id) {
-    const map<string, unsigned int>::iterator pos = contador.find(prod_id);
-
-    if (pos == contador.end())
+void Inventari::quitar_prod(const string& prod_id) {
+    if (!productes.erase(prod_id))
         throw ProducteNoExistent();
-
-    if (prod_id == last_query_id) last_query_id = "";
-
-    contador.erase(pos);
 }
 
 void Inventari::afegir_unitats(const string& prod_id, const unsigned int& unitats) {
-    query(prod_id) += unitats;
+    if (!Inventari::existeix_producte(prod_id))
+        throw ProducteNoExistent();
+    contador[prod_id] += unitats;
+    elements += unitats;
 }
 void Inventari::treure_unitats(const string& prod_id, const unsigned int& unitats) {
-    query(prod_id) -= unitats;
+    if (!Inventari::existeix_producte(prod_id))
+        throw ProducteNoExistent();
+    contador[prod_id] -= unitats;
+    elements -= unitats;
 }
 
-unsigned int Inventari::consultar_producte(const string& prod_id) {
-    return query(prod_id);
+unsigned int Inventari::consultar_producte(const string& prod_id) const {
+    if (!Inventari::existeix_producte(prod_id))
+        throw ProducteNoExistent();
+    try {
+        return contador.at(prod_id);
+    } catch (const std::out_of_range& e) {
+        return 0;
+    }
 }
 
-void Inventari::mostra() const {
-    for (const auto& element : contador)
-        cout << "  " << element.first << ' ' << element.second << endl;
+void Inventari::mostra(const bool& show_zeros) const {
+    for (const auto& element : Inventari::contador)
+        if (Inventari::existeix_producte(element.first)
+                and (show_zeros or element.second))
+            cout << "  " << element.first << ' ' << element.second << endl;
 }
 
-bool Inventari::existeix_producte(const string& prod_id) const {
-    return contador.find(prod_id) != contador.end();
+unsigned int Inventari::total_productes() const {
+    return elements;
 }
+
+bool Inventari::existeix_producte(const string& prod_id) {
+    return productes.find(prod_id) != productes.end();
+}
+
+map <string, unsigned int>& Inventari::data() {
+    return contador;
+};
