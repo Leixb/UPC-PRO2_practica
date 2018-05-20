@@ -9,6 +9,7 @@
 
 #include<string>
 #include<vector>
+#include<queue>
 
 /**
  * @brief Sala del magatzem
@@ -23,6 +24,9 @@ class Sala {
          *dreta;    ///< Apuntador a la Sala filla dreta. *nullptr* si la sala actual es una fulla.
 
     mutable Inventari inv;
+
+    std::priority_queue<unsigned int, std::vector<unsigned int>, std::greater<unsigned int> > forats;
+    unsigned int last_pos;
 
     public:
 

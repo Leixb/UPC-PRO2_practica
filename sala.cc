@@ -23,23 +23,35 @@ Sala* Sala::fill_esq() const {
 
 void Sala::crea_estanteria(const unsigned int& f, const unsigned int& c) {
     estant = vector<string>(f*c, "");
-    files = f, columnes = c;
+    files = f, columnes = c, last_pos = 0;
 }
 
 unsigned int Sala::poner_items(const string& prod_id, const unsigned int& cantidad) {
     unsigned int afegits = 0;
-    for (unsigned int i = 0; i < files*columnes and (cantidad > afegits); ++i)
-        if (!Inventari::existeix_producte(estant[i]))
-            estant[i] = prod_id, ++afegits;
+
+    while (!forats.empty() and cantidad > afegits) {
+        estant[forats.top()] = prod_id, ++afegits;
+        forats.pop();
+    }
+
+    unsigned int i;
+    for (i = last_pos; i < files*columnes and cantidad > afegits; ++i)
+        estant[i] = prod_id, ++afegits;
+
+    last_pos = i;
+
     inv.afegir_unitats(prod_id, afegits);
-    return cantidad-afegits;
+
+    return cantidad - afegits;
 }
 
 unsigned int Sala::quitar_items(const string& prod_id, const unsigned int& cantidad) {
     unsigned int eliminats = 0;
-    for (unsigned int i = 0; i < files*columnes and cantidad - eliminats; ++i)
-        if (estant[i] == prod_id)
+    for (unsigned int i = 0; i < last_pos and cantidad > eliminats; ++i)
+        if (estant[i] == prod_id) {
             estant[i] = "", ++eliminats;
+            forats.push(i);
+        }
     inv.treure_unitats(prod_id, eliminats);
     return cantidad - eliminats;
 }
@@ -56,7 +68,8 @@ void Sala::compactar() {
     for (const string& prod : estant)
         if (Inventari::existeix_producte(prod)) v.push_back(prod);
     v.resize(files*columnes);
-    estant = v;
+    forats = priority_queue<unsigned int, vector<unsigned int>, greater<unsigned int> > ();
+    estant = v, last_pos = inv.total_productes();
 }
 
 void Sala::reorganizar() {
@@ -67,6 +80,8 @@ void Sala::reorganizar() {
             return !Inventari::existeix_producte(b) or a < b;
         }
     );
+    last_pos = inv.total_productes();
+    forats = priority_queue<unsigned int, vector<unsigned int>, greater<unsigned int> > ();
 }
 
 void Sala::redimensionar(const unsigned int& f, const unsigned int& c) {
