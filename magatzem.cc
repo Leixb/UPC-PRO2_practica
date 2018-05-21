@@ -7,8 +7,6 @@
 #include "magatzem.hh"
 
 #include <iostream>
-#include <list>
-#include <map>
 #include <queue>
 
 using namespace std;
@@ -46,7 +44,7 @@ void Magatzem::forma_arbre_pre(Sala* pare) {
 }
 
 void Magatzem::poner_prod(const string& prod_id) {
-    Inventari::afegir_prod(prod_id);
+    Inventari::poner_prod(prod_id);
     inv.afegir_unitats(prod_id, 0);
 }
 

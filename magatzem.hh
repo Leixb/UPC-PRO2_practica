@@ -8,29 +8,27 @@
 #include "inventari.hh"
 #include "sala.hh"
 
-#include <list>
-#include <map>
 #include <vector>
 
 /**
- * @brief Classe principal, administra les sales i productes
+ * @brief Classe principal, administra les sales i l'inventari.
  */
 class Magatzem {
     unsigned int n_sales; ///< Nombre de sales al magatzem.
     Sala *root; ///< Sala principal, arrel, de l'arbre de sales.
-    std::vector<Sala*> sala_map; ///< Relaciona l'id d'una sala amb la seva posició a la memoria.
+    std::vector<Sala*> sala_map; ///< Relaciona l'identificador d'una sala amb la seva posició a la memòria.
 
     Inventari inv;
 
     /**
      * @brief Llegeix per std_in un arbre binari en preordre i l'associa a
-     * pare
+     * pare.
      *
-     * @param pare node al que s'acopla l'arbre llegit
+     * @param pare node sobre el que es forma l'arbre llegit.
      *
-     * @pre a std_in trobem un arbre binari en preordre en els quals 0
-     * marquen les fulles i els nodes son naturals entre 1 i n_sales inclos
-     * sense repetir
+     * @pre a std_in trobem un arbre binari en *preordre* en els quals 0
+     * marquen les fulles i els nodes son naturals entre 1 i n_sales inclòs
+     * sense repetir.
      */
     void forma_arbre_pre(Sala* pare);
 
@@ -38,22 +36,24 @@ class Magatzem {
 
     /**
      * @brief Llegeix per std_in tota la informació necessària per a formar
-     * l'arbre de sales aixi com les seves estanteries
+     * l'arbre de sales així com les seves estanteries.
      *
-     * @pre std_in te una entrada vàlida
+     * @pre std_in conté una entrada vàlida.
      *
      * @post n_sales conte el nombre de sales, root apunta a un arbre que conte
-     * l'informació entrada i sala_map conté les direccions en memòria de cada
-     * sala de l'arbre indexades pel seu identificador
+     * d'informació entrada i sala_map conté les direccions en memòria de cada
+     * sala de l'arbre indexades pel seu identificador.
      */
     void inicialitza();
 
     /**
-     * @brief Afegeix un producte a la llista de productes
+     * @brief Afegeix un producte a la llista de productes.
      *
      * @param prod_id id del producte a afegir
      *
      * @throws ProducteJaExistent() si el producte a afegir ja existeix
+     *
+     * @see Inventari#poner_prod
      */
     void poner_prod(const std::string& prod_id);
 
@@ -63,6 +63,8 @@ class Magatzem {
      * @param prod_id id del producte a eliminar
      *
      * @throws ProducteNoExistent() si el producte a eliminar no existeix
+     *
+     * @see Inventari#quitar_prod
      */
     void quitar_prod(const std::string& prod_id);
 
@@ -70,11 +72,11 @@ class Magatzem {
      * @brief Afegeix una quantitat d'un producte a una sala
      *
      * @param sala_id identificador de la sala a afegir el producte
-     * @param prod_id identificadoe del producte a afegir
+     * @param prod_id identificador del producte a afegir
      * @param cantidad quantitat d'unitats de producte a afegir
      *
      * @return unitats de producte que no s'han pogut afegir ja que la sala
-     * s'ha omplert fins la seva maxima capacitat
+     * s'ha omplert fins la seva màxima capacitat
      *
      * @throws ProducteNoExistent() si no existeix el producte prod_id
      *
@@ -86,7 +88,7 @@ class Magatzem {
      * @brief Elimina una quantitat d'un producte a una sala
      *
      * @param sala_id identificador de la sala a eliminar el producte
-     * @param prod_id identificadoe del producte a eliminar
+     * @param prod_id identificador del producte a eliminar
      * @param cantidad quantitat d'unitats de producte a eliminar
      *
      * @return unitats de producte que no s'han pogut eliminar ja que no hi
@@ -104,15 +106,15 @@ class Magatzem {
      * @param prod_id identificador del producte a distribuir
      * @param cantidad quantitat de producte
      *
-     * @return nombre d'unitats del producte que no s'han pogut distrbuir
-     * seguint el procediment de distribució
+     * @return nombre d'unitats del producte que no s'han pogut distribuir
+     * seguint el procediment de distribució.
      *
      * @see Sala#distribuir
      */
     unsigned int distribuir(const std::string& prod_id, const unsigned int& cantidad);
 
     /**
-     * @brief Compacta l'estanteria de la sala identificada per l'id.
+     * @brief Compacta l'estanteria de la sala identificada per sala_id.
      *
      * @param sala_id identificador de la sala
      *
@@ -123,13 +125,13 @@ class Magatzem {
     void compactar(const unsigned int& sala_id);
 
     /**
-     * @brief Reorganitza l'estanteria de la sala identificada per l'id
+     * @brief Reorganitza l'estanteria de la sala identificada per sala_id.
      *
      * @param sala_id identificador de la sala
      *
      * @post la estanteria de la sala esta ordenada
      *
-     * @see sala#reorganizar
+     * @see Sala#reorganizar
      */
     void reorganizar(const unsigned int& sala_id);
 
@@ -152,6 +154,8 @@ class Magatzem {
     /**
      * @brief Mostra per std_out els identificadors de producte i el nombre
      * d'unitats al magatzem ordenats alfabeticament per identificador
+     *
+     * @see Inventari#mostra
      */
     void inventario();
 
@@ -165,30 +169,30 @@ class Magatzem {
     void escribir(const unsigned int& sala_id) const;
 
     /**
-     * @brief Consulta el producte que es troba a la posicio f, c de la sala
+     * @brief Consulta el producte que es troba a la posició f, c de la sala
      * sala_id
      *
      * @param sala_id identificador de la sala a consultar
      * @param f fila a consultar
      * @param c columna a consultar
      *
-     * @return punter al producte que es troba a la posicio especificada del
-     * magatzem, *nullptr* si la posicio es buida
+     * @return identificador del producte que es troba a la posició especificada del
+     * magatzem, "NULL" si la posició es buida.
      *
      * @see Sala#consultar_pos
      */
     std::string consultar_pos(const unsigned int& sala_id, const unsigned int& f, const unsigned int& c) const;
 
     /**
-     * @brief Consulta el nombre d'unitats d'un producte al magatzem
+     * @brief Consulta el nombre d'unitats d'un producte al magatzem.
      *
-     * @param prod_id identificador del producte a consultar
+     * @param prod_id identificador del producte a consultar.
      *
-     * @return nombre d'unitats del producte al magatzem
+     * @return nombre d'unitats del producte al magatzem.
      *
-     * @throws ProducteNoExistent() si el producte no existeix
+     * @throws ProducteNoExistent() si el producte no existeix.
      *
-     * @see Producte#consulta_unitats
+     * @see Inventari#consultar_producte
      */
     unsigned int consultar_prod(const std::string& prod_id);
 };
