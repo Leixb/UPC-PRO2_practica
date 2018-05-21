@@ -77,7 +77,7 @@ void Sala::compactar() {
 void Sala::reorganizar() {
     vector<string> v;
     v.reserve(files*columnes);
-    for ( auto prod : inv.data())
+    for (const pair<string, unsigned int>& prod : inv.data())
         for (unsigned int i = 0; i < prod.second; ++i) v.push_back(prod.first);
     v.resize(files*columnes);
     estant = v;

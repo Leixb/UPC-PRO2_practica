@@ -13,7 +13,7 @@ class Inventari {
 
     static std::unordered_set <std::string> productes;
 
-    size_t elements;
+    unsigned int elements;
 
     public:
 
@@ -86,8 +86,9 @@ class Inventari {
      * alfabeticament per identificador
      */
     void mostra(const bool& show_zeros=true) const;
+
     unsigned int total_productes() const;
 
-    std::map <std::string, unsigned int>& data();
+    const std::map <std::string, unsigned int>& data();
 };
 #endif /* ifndef INVENTARI_H */

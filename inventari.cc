@@ -47,7 +47,7 @@ unsigned int Inventari::consultar_producte(const string& prod_id) const {
 }
 
 void Inventari::mostra(const bool& show_zeros) const {
-    for (const auto& element : Inventari::contador)
+    for (const pair<string, unsigned int>& element : Inventari::contador)
         if (Inventari::existeix_producte(element.first)
                 and (show_zeros or element.second))
             cout << "  " << element.first << ' ' << element.second << endl;
@@ -61,6 +61,6 @@ bool Inventari::existeix_producte(const string& prod_id) {
     return productes.find(prod_id) != productes.end();
 }
 
-map <string, unsigned int>& Inventari::data() {
+const map <string, unsigned int>& Inventari::data() {
     return contador;
 };
