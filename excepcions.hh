@@ -7,7 +7,7 @@
 
 #include<exception>
 
-class ExpectedError : public std::exception  {};
+class ExpectedError : public std::exception {};
 
 class ProducteNoExistent : public ExpectedError {
     virtual const char* what() const throw() {
