@@ -57,10 +57,10 @@ void Magatzem::quitar_prod(const string& prod_id) {
 }
 
 unsigned int Magatzem::poner_items(const unsigned int& sala_id, const string& prod_id, const unsigned int& cantidad) {
-    Sala* sala = sala_map.at(sala_id);
-
     if (!Inventari::existeix_producte(prod_id))
         throw ProducteNoExistent();
+
+    Sala* sala = sala_map.at(sala_id);
 
     const unsigned int sobrants = sala->poner_items(prod_id, cantidad);
 
@@ -70,10 +70,10 @@ unsigned int Magatzem::poner_items(const unsigned int& sala_id, const string& pr
 }
 
 unsigned int Magatzem::quitar_items(const unsigned int& sala_id, const string& prod_id, const unsigned int& cantidad) {
-    Sala* sala = sala_map.at(sala_id);
-
     if (!Inventari::existeix_producte(prod_id))
         throw ProducteNoExistent();
+
+    Sala* sala = sala_map.at(sala_id);
 
     const unsigned int sobrants = sala->quitar_items(prod_id, cantidad);
 
@@ -83,14 +83,13 @@ unsigned int Magatzem::quitar_items(const unsigned int& sala_id, const string& p
 }
 
 unsigned int Magatzem::distribuir(const string& prod_id, const unsigned int& cantidad) {
-
     if (!Inventari::existeix_producte(prod_id))
         throw ProducteNoExistent();
 
     queue<pair<Sala*, int> > salas;
-    salas.push({root, cantidad});
-
     unsigned int no_distribuidas = 0;
+
+    salas.push({root, cantidad});
 
     while(!salas.empty()) {
         unsigned int cantidad_sala = salas.front().second;

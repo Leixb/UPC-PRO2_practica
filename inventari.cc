@@ -49,7 +49,7 @@ unsigned int Inventari::consultar_producte(const string& prod_id) const {
 void Inventari::mostra(const bool& show_zeros) const {
     for (const pair<string, unsigned int>& element : Inventari::contador)
         if (Inventari::existeix_producte(element.first)
-                and (show_zeros or element.second))
+                and (element.second or show_zeros))
             cout << "  " << element.first << ' ' << element.second << endl;
 }
 
