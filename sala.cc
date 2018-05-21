@@ -83,14 +83,15 @@ void Sala::compactar() {
 }
 
 void Sala::reorganizar() {
-    vector<string> v;
-    v.reserve(files*columnes);
+    estant.clear();
+    estant.reserve(files*columnes);
     for (const pair<string, unsigned int>& prod : inv.data())
-        for (unsigned int i = 0; i < prod.second; ++i) v.push_back(prod.first);
-    v.resize(files*columnes);
-    estant = v;
-    last_pos = inv.total_productes();
-    forats = priority_queue<unsigned int, vector<unsigned int>, greater<unsigned int> > ();
+        for (unsigned int i = 0; i < prod.second; ++i)
+            estant.push_back(prod.first);
+    estant.resize(files*columnes);
+
+    last_pos = inv.total_productes(),
+    forats   = priority_queue<unsigned int, vector<unsigned int>, greater<unsigned int> > ();
 }
 
 void Sala::redimensionar(const unsigned int& f, const unsigned int& c) {
