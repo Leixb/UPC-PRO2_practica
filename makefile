@@ -34,11 +34,14 @@ doc: doxyfile *.hh *.cc
 	doxygen doxyfile
 	make -C doc/latex
 
+html.zip: doc
+	zip html.zip doc/html -r
+
 clean:
 	-rm -r $(objects)
 
-practica.tar: *.cc *.hh makefile
-	tar -cvf practica.tar makefile *.cc *.hh
+practica.tar: *.cc *.hh makefile html.zip
+	tar -cvf practica.tar html.zip makefile *.cc *.hh
 
 upload: test practica.tar
 	jutge upload --code X73158_ca --compiler MakePRO2 practica.tar --check --annotation "Uploaded by jutge_cli. MD5: $(shell md5sum practica.tar) commit: $(shell git rev-parse HEAD)"
