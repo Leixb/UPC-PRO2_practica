@@ -4,8 +4,7 @@ test_dir = jocs_prova
 DIFF = diff -y
 
 CPP = g++
-#CPPFLAGS = --std=c++11 -Wall
-CPPFLAGS = -D_JUDGE_ -D_GLIBCXX_DEBUG -O2 -Wall -Wextra -Werror -Wno-sign-compare -std=c++11 -g
+CPPFLAGS = -D_JUDGE_ -D_GLIBCXX_DEBUG -O2 -Wall -Wextra -Werror -Wno-sign-compare -std=c++11
 
 .PHONY: debug clean test profile release upload
 
