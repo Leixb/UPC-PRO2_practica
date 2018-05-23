@@ -63,9 +63,9 @@ unsigned int Sala::quitar_items(const string& prod_id, const unsigned int& canti
 
 string Sala::consultar_pos(const unsigned int& f, const unsigned int& c) const {
     string prod_id = estant.at((files - f)*columnes + c-1);
-    if (Inventari::existeix_producte(prod_id))
-        return prod_id;
-    return "NULL";
+    if (prod_id == "")
+        return "NULL";
+    return prod_id;
 }
 
 void Sala::compactar() {
@@ -73,7 +73,7 @@ void Sala::compactar() {
         vector<string> v;
         v.reserve(files*columnes);
         for (const string& prod : estant)
-            if (Inventari::existeix_producte(prod))
+            if (prod != "")
                 v.push_back(prod);
         v.resize(files*columnes);
         estant = v;
@@ -109,8 +109,10 @@ void Sala::escribir() const {
         for (unsigned int j = 0; j < columnes; ++j) {
             string prod = estant[i*columnes + j];
             cout << ' ';
-            if (Inventari::existeix_producte(prod)) cout << prod;
-            else cout << "NULL";
+            if (prod == "")
+                cout << "NULL";
+            else
+                cout << prod;
         }
         cout << endl;
     }

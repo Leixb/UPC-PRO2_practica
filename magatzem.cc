@@ -96,7 +96,7 @@ unsigned int Magatzem::distribuir(const string& prod_id, const unsigned int& can
 
         cantidad_sala = sala->poner_items(prod_id, cantidad_sala);
         if (cantidad_sala) {
-            if (sala->fill_esq() != NULL) {
+            if (sala->fill_esq() != nullptr) {
                 salas.push({sala->fill_esq(), cantidad_sala/2 + cantidad_sala%2});
                 salas.push({sala->fill_dre(), cantidad_sala/2});
             } else no_distribuidas += cantidad_sala;
