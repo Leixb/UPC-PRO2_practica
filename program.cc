@@ -31,6 +31,8 @@ do {\
 } while(false)
 
 int main() {
+    ios_base::sync_with_stdio(false);
+
     Magatzem mag;
 
     mag.inicialitza();
