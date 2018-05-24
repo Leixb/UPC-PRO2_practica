@@ -113,6 +113,6 @@ class Inventari {
      *
      * @see Sala#reorganizar
      */
-    const std::map <std::string, unsigned int>& data();
+    const std::map <std::string, unsigned int>& data() const;
 };
 #endif /* ifndef INVENTARI_H */
