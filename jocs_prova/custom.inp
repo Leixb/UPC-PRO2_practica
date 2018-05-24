@@ -1,0 +1,92 @@
+7
+6 5 0 0 4 1 3 0 0 2 0 0 7 0 0
+3 3
+4 5
+10 4
+1 1
+6 1
+3 1
+5 8
+escribir 1
+escribir 2
+escribir 3
+escribir 4
+escribir 5
+escribir 6
+escribir 7
+inventario
+consultar_prod AAAA
+poner_prod AAAA
+consultar_prod AAAA
+distribuir AAAA 77
+escribir 1
+escribir 2
+escribir 3
+escribir 4
+escribir 5
+escribir 6
+escribir 7
+quitar_prod AAAA
+poner_prod bbBB
+poner_prod CCCC
+inventario
+poner_items 7 bbBB 40
+poner_items 4 bbBB 5
+quitar_items 7 AAAA 10
+quitar_items 5 AAAA 3
+quitar_items 3 AAAA 1
+quitar_items 1 AAAA 57
+distribuir CCCC 30
+escribir 1
+escribir 2
+escribir 3
+escribir 4
+escribir 5
+escribir 6
+escribir 7
+inventario
+redimensionar 5 2 10
+escribir 5
+compactar 7
+escribir 7
+quitar_items 7 bbBB 2
+redimensionar 7 9 4
+escribir 7
+quitar_items 3 AAAA 4
+poner_items 3 bbBB 6
+poner_items 3 AAAA 1
+poner_items 3 CCCC 19
+quitar_items 3 bbBB 3
+quitar_items 3 CCCC 5
+poner_items 3 AAAA 7
+poner_items 3 bbBB 7
+escribir 3
+reorganizar 3
+escribir 3
+consultar_prod bbBB
+consultar_prod BBBB
+consultar_prod AAAA
+consultar_pos 7 3 5
+consultar_pos 2 1 4
+quitar_prod AAAA
+escribir 1
+escribir 2
+escribir 3
+escribir 4
+escribir 5
+escribir 6
+escribir 7
+quitar_items 1 AAAA 1
+quitar_items 2 AAAA 34
+quitar_items 3 AAAA 27
+quitar_items 4 AAAA 10
+quitar_items 5 AAAA 4
+quitar_items 6 AAAA 3
+quitar_items 7 AAAA 18
+escribir 7
+inventario
+quitar_prod AAAA
+inventario
+distribuir AAAA 10
+consultar_prod AAAA
+fin
