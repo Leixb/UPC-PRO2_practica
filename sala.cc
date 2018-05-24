@@ -69,7 +69,7 @@ string Sala::consultar_pos(const unsigned int& f, const unsigned int& c) const {
 }
 
 void Sala::compactar() {
-    {
+    if (!forats.empty()) {
         vector<string> v;
         v.reserve(files*columnes);
         for (const string& prod : estant)
@@ -77,9 +77,9 @@ void Sala::compactar() {
                 v.push_back(prod);
         v.resize(files*columnes);
         estant = v;
+        last_pos = inv.total_productes(),
+        forats   = priority_queue<unsigned int, vector<unsigned int>, greater<unsigned int> > ();
     }
-    last_pos = inv.total_productes(),
-    forats   = priority_queue<unsigned int, vector<unsigned int>, greater<unsigned int> > ();
 }
 
 void Sala::reorganizar() {
