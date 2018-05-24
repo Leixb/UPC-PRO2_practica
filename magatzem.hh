@@ -18,7 +18,7 @@ class Magatzem {
     Sala *root; ///< Sala principal, arrel, de l'arbre de sales.
     std::vector<Sala*> sala_map; ///< Relaciona l'identificador d'una sala amb la seva posició a la memòria.
 
-    Inventari inv;
+    Inventari inv; ///< Inventari gobal del magatzem.
 
     /**
      * @brief Llegeix per std_in un arbre binari en preordre i l'associa a
@@ -49,34 +49,34 @@ class Magatzem {
     /**
      * @brief Afegeix un producte a la llista de productes.
      *
-     * @param prod_id id del producte a afegir
+     * @param prod_id id del producte a afegir.
      *
-     * @throws ProducteJaExistent() si el producte a afegir ja existeix
+     * @throws ProducteJaExistent() si el producte a afegir ja existeix.
      *
      * @see Inventari#poner_prod
      */
     void poner_prod(const std::string& prod_id);
 
     /**
-     * @brief Elimina un producte de la llista de productes
+     * @brief Elimina un producte de la llista de productes.
      *
-     * @param prod_id id del producte a eliminar
+     * @param prod_id id del producte a eliminar.
      *
-     * @throws ProducteNoExistent() si el producte a eliminar no existeix
+     * @throws ProducteNoExistent() si el producte a eliminar no existeix.
      *
      * @see Inventari#quitar_prod
      */
     void quitar_prod(const std::string& prod_id);
 
     /**
-     * @brief Afegeix una quantitat d'un producte a una sala
+     * @brief Afegeix una quantitat d'un producte a una sala.
      *
-     * @param sala_id identificador de la sala a afegir el producte
-     * @param prod_id identificador del producte a afegir
-     * @param cantidad quantitat d'unitats de producte a afegir
+     * @param sala_id identificador de la sala a afegir el producte.
+     * @param prod_id identificador del producte a afegir.
+     * @param cantidad quantitat d'unitats de producte a afegir.
      *
      * @return unitats de producte que no s'han pogut afegir ja que la sala
-     * s'ha omplert fins la seva màxima capacitat
+     * s'ha omplert fins la seva màxima capacitat.
      *
      * @throws ProducteNoExistent() si no existeix el producte prod_id
      *
@@ -85,26 +85,26 @@ class Magatzem {
     unsigned int poner_items(const unsigned int& sala_id, const std::string& prod_id, const unsigned int& cantidad);
 
     /**
-     * @brief Elimina una quantitat d'un producte a una sala
+     * @brief Elimina una quantitat d'un producte a una sala.
      *
-     * @param sala_id identificador de la sala a eliminar el producte
-     * @param prod_id identificador del producte a eliminar
-     * @param cantidad quantitat d'unitats de producte a eliminar
+     * @param sala_id identificador de la sala a eliminar el producte.
+     * @param prod_id identificador del producte a eliminar.
+     * @param cantidad quantitat d'unitats de producte a eliminar.
      *
      * @return unitats de producte que no s'han pogut eliminar ja que no hi
      * havia prous unitats del producte a la sala.
      *
-     * @throws ProducteNoExistent() si no existeix el producte prod_id
+     * @throws ProducteNoExistent() si no existeix el producte prod_id.
      *
      * @see Sala#quitar_items
      */
     unsigned int quitar_items(const unsigned int& sala_id, const std::string& prod_id, const unsigned int& cantidad);
 
     /**
-     * @brief Distribueix una quantitat de producte pel magatzem
+     * @brief Distribueix una quantitat de producte pel magatzem.
      *
-     * @param prod_id identificador del producte a distribuir
-     * @param cantidad quantitat de producte
+     * @param prod_id identificador del producte a distribuir.
+     * @param cantidad quantitat de producte.
      *
      * @return nombre d'unitats del producte que no s'han pogut distribuir
      * seguint el procediment de distribució.
@@ -116,9 +116,9 @@ class Magatzem {
     /**
      * @brief Compacta l'estanteria de la sala identificada per sala_id.
      *
-     * @param sala_id identificador de la sala
+     * @param sala_id identificador de la sala.
      *
-     * @post la estanteria de la sala esta compactada
+     * @post la estanteria de la sala esta compactada.
      *
      * @see Sala#compactar
      */
@@ -127,25 +127,25 @@ class Magatzem {
     /**
      * @brief Reorganitza l'estanteria de la sala identificada per sala_id.
      *
-     * @param sala_id identificador de la sala
+     * @param sala_id identificador de la sala.
      *
-     * @post la estanteria de la sala esta ordenada
+     * @post la estanteria de la sala esta ordenada.
      *
      * @see Sala#reorganizar
      */
     void reorganizar(const unsigned int& sala_id);
 
     /**
-     * @brief Canvia les dimensions de l'estanteria de la sala
+     * @brief Canvia les dimensions de l'estanteria de la sala.
      *
      * @param sala_id identificador de la sala
      * @param f nou nombre de files
      * @param c nou nombre de columnes
      *
-     * @post la estanteria de la sala te noves dimensions
+     * @post la estanteria de la sala te noves dimensions f*c.
      *
      * @throws DimensionsInsuficients() si les noves dimensions de l'estanteria no poden contenir
-     * els productes que tenia anteriorment
+     * els productes que tenia anteriorment.
      *
      * @see Sala#redimensionar
      */
@@ -153,7 +153,7 @@ class Magatzem {
 
     /**
      * @brief Mostra per std_out els identificadors de producte i el nombre
-     * d'unitats al magatzem ordenats alfabeticament per identificador
+     * d'unitats al magatzem ordenats alfabèticament per identificador.
      *
      * @see Inventari#mostra
      */
@@ -162,7 +162,7 @@ class Magatzem {
     /**
      * @brief Mostra per std_out el contingut de l'estanteria de la sala.
      *
-     * @param sala_id identificador de la sala a mostrar
+     * @param sala_id identificador de la sala a mostrar.
      *
      * @see Sala#escribir
      */
@@ -170,11 +170,11 @@ class Magatzem {
 
     /**
      * @brief Consulta el producte que es troba a la posició f, c de la sala
-     * sala_id
+     * sala_id.
      *
-     * @param sala_id identificador de la sala a consultar
-     * @param f fila a consultar
-     * @param c columna a consultar
+     * @param sala_id identificador de la sala a consultar.
+     * @param f fila a consultar.
+     * @param c columna a consultar.
      *
      * @return identificador del producte que es troba a la posició especificada del
      * magatzem, "NULL" si la posició es buida.

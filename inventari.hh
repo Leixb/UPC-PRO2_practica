@@ -9,10 +9,10 @@
 #include<unordered_set>
 
 class Inventari {
-    static std::unordered_set <std::string> productes; ///< Conjunt de productes registrats
+    static std::unordered_set <std::string> productes; ///< Conjunt de productes registrats.
 
-    std::map <std::string, unsigned int> comptador; ///< Comptador de productes
-    unsigned int elements; ///< Nombre d'unitats a l'inventari
+    std::map <std::string, unsigned int> comptador; ///< Comptador de productes.
+    unsigned int elements; ///< Nombre d'unitats a l'inventari.
 
     public:
 
@@ -29,7 +29,7 @@ class Inventari {
     /**
      * @brief Afegeix un producte a l'inventari.
      *
-     * @param prod_id Identificador del producte
+     * @param prod_id Identificador del producte.
      *
      * @thows ProducteJaExistent() si existeix un producte amb l'identificador especificat
      * a l'estanteria.
@@ -42,7 +42,7 @@ class Inventari {
     /**
      * @brief Elimina un producte de l'inventari.
      *
-     * @param prod_id Identificador del producte
+     * @param prod_id Identificador del producte.
      *
      * @thows ProducteNoExistent() si NO existeix un producte amb l'identificador especificat
      * a l'estanteria.
@@ -54,8 +54,8 @@ class Inventari {
     /**
      * @brief Afegeix unitats de producte al inventari.
      *
-     * @param prod_id Identificador del producte
-     * @param unitats Unitats de producte a afegir
+     * @param prod_id Identificador del producte.
+     * @param unitats Unitats de producte a afegir.
      *
      * @post El nombre d'unitats del producte prod_id a l'inventari s'ha incrementat en *unitats*.
      *
@@ -67,8 +67,8 @@ class Inventari {
     /**
      * @brief Treu unitats de producte al inventari.
      *
-     * @param prod_id Identificador del producte
-     * @param unitats Unitats de producte a treure
+     * @param prod_id Identificador del producte.
+     * @param unitats Unitats de producte a treure.
      *
      * @pre El nombre d'unitats a treure (unitats) és >= a el nombre d'unitats que es
      * troben a l'inventari.
@@ -93,11 +93,11 @@ class Inventari {
     unsigned int consultar_producte(const std::string& prod_id) const;
 
     /**
-     * @brief Mostra per std_out el contingut de l'inventari
+     * @brief Mostra per std_out el contingut de l'inventari.
      *
      * Mostra línia per línia l'identificador de producte seguit del nombre
      * d'unitats que es troben a l'inventari. Els productes s'ordenen
-     * alfabèticament per identificador
+     * alfabèticament per identificador.
      */
     void mostra(const bool& show_zeros=true) const;
 
