@@ -23,7 +23,7 @@ class Sala {
     Sala *esquerra, ///< Apuntador a la Sala filla esquerra. *nullptr* si la sala actual es una fulla.
          *dreta;    ///< Apuntador a la Sala filla dreta. *nullptr* si la sala actual es una fulla.
 
-    mutable Inventari inv;
+    Inventari inv;
 
     std::priority_queue<unsigned int, std::vector<unsigned int>, std::greater<unsigned int> > forats;
     unsigned int last_pos;
