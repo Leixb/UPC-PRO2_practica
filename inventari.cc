@@ -63,4 +63,4 @@ bool Inventari::existeix_producte(const string& prod_id) {
 
 const map <string, unsigned int>& Inventari::data() const {
     return comptador;
-};
+}
