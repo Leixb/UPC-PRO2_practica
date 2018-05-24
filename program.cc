@@ -24,7 +24,11 @@
 using namespace std;
 
 #define SPC "  "
-#define OUTPUT(x) const auto out = x; cout << SPC << out << endl
+#define OUTPUT(x)\
+do {\
+    const auto out = x;\
+    cout << SPC << out << endl;\
+} while(false)
 
 int main() {
     Magatzem mag;
