@@ -275,7 +275,7 @@ consultar_prod BBBB
   error
 consultar_prod AAAA
   27
-consultar_pos 7 3 5
+consultar_pos 7 3 4
   bbBB
 consultar_pos 2 1 4
   NULL
