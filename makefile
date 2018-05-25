@@ -26,8 +26,7 @@ release: CPPFLAGS+=-O3
 release: clean program.exe
 
 test: program.exe
-	./program.exe <$(test_dir)/sample.inp >$(test_dir)/test.out
-	$(DIFF) $(test_dir)/sample.cor $(test_dir)/test.out
+	./program.exe <$(test_dir)/sample.inp | diff - -y $(test_dir)/sample.cor $(test_dir)/test.out
 
 doc: doxyfile *.hh *.cc
 	doxygen doxyfile
