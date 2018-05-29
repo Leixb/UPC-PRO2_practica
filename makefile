@@ -30,7 +30,7 @@ test: program.exe
 
 doc: doxyfile *.hh *.cc
 	doxygen doxyfile
-	make -C doc/latex
+	#make -C doc/latex
 
 html.zip: doc
 	zip html.zip doc/html -r
