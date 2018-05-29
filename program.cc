@@ -1,5 +1,5 @@
 /**
- * @file treekea.cc
+ * @file program.cc
  * @brief Programa principal (main)
  */
 
@@ -13,8 +13,6 @@
  * - Magatzem
  * - Sala
  * - Inventari
- *
- * Només es documenten els metodes públics.
  */
 #include "excepcions.hh"
 #include "magatzem.hh"

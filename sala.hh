@@ -27,7 +27,10 @@ class Sala {
 
     /**
      * @brief cua que conte els forats que es generen entre productes al
-     * eliminar-ne.
+     * eliminar-ne. Mantenir una qua amb els forats permet millorar
+     * l'eficiència al posar_items a la sala
+     *
+     * @see poner_items
      */
     std::priority_queue<unsigned int, std::vector<unsigned int>, std::greater<unsigned int> > forats;
     unsigned int last_pos; ///< Posició de l'estanteria a partir de la qual tot es NULL. (inclosa)
@@ -75,9 +78,14 @@ class Sala {
      * @param prod Identificador del producte
      * @param cantidad Unitats del producte a col·locar
      *
-     * @return Nombre d'unitats no col·locades
-     *
      * @pre Existeix el Producte identificat per prod_id
+     * @post S'han afegit els items a l'estanteria
+     *
+     * @cost
+     * lineal en quantitat de productes afegits (mínim entre cantidad i
+     * forats a la sala)
+     *
+     * @return Nombre d'unitats no col·locades
      */
     unsigned int poner_items(const std::string& prod, const unsigned int& cantidad);
 
@@ -88,7 +96,10 @@ class Sala {
      * @param cantidad Unitats del producte
      *
      * @return Nombre d'unitats no eliminades, ja que no quedaven més unitats a
-     * l'estanteria
+     * l'estanteria.
+     *
+     * @cost
+     * f\*c
      *
      * @pre Existeix el Producte identificat per prod_id
      */
@@ -97,6 +108,12 @@ class Sala {
     /**
      * @brief Elimina els espais entre elements de l'estanteria mantenint
      * l'ordre entre ells.
+     *
+     * @post L'estanteria queda compactada. No hi ha forats (forats.empty() és
+     * true) i last_pos == nombre d'ítems a l'estanteria.
+     *
+     * @cost
+     * lineal en last_pos (pitjor cas last_pos = f*c)
      */
     void compactar();
 
@@ -104,7 +121,8 @@ class Sala {
      * @brief Reordena el contingut de l'estanteria alfabèticament i deixant
      * els espais buits al final.
      *
-     * @post estanteria queda ordenada
+     * @post estanteria queda ordenada i compacta (forats està buit i last_pos
+     * == nombre d'items a l'estanteria.
      */
     void reorganizar();
 
@@ -120,7 +138,11 @@ class Sala {
      * @param f nou nombre de files
      * @param c nou nombre de columnes
      *
-     * @post estanteria queda compactada i amb nova mida f*c.
+     * @post estanteria queda compactada i amb nova mida f*c. No hi ha forats i
+     * last_pos = nombre d'ítems a l'estanteria.
+     *
+     * @cost
+     * Igual que compactar, lineal en last_pos (pitjor cas last_pos = f*c)
      *
      * @throws DimensionsInsuficients() si elements > f*c
      */
@@ -137,6 +159,10 @@ class Sala {
      * seguit d'un inventari per ordre alfabètic de cada producte i el nombre
      * d'unitats que es troben a l'estanteria. Si el producte no es troba a
      * l'estanteria no es mostra.
+     *
+     * @cost
+     * f*c
+     *
      */
     void escribir() const;
 };

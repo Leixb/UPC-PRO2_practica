@@ -18,7 +18,7 @@ class Magatzem {
     Sala *root; ///< Sala principal, arrel, de l'arbre de sales.
     std::vector<Sala*> sala_map; ///< Relaciona l'identificador d'una sala amb la seva posició a la memòria.
 
-    Inventari inv; ///< Inventari gobal del magatzem.
+    Inventari inv; ///< Inventari global del magatzem.
 
     /**
      * @brief Llegeix per std_in un arbre binari en preordre i l'associa a
@@ -49,7 +49,7 @@ class Magatzem {
     /**
      * @brief Afegeix un producte a la llista de productes.
      *
-     * @param prod_id id del producte a afegir.
+     * @param prod_id identificador del producte a afegir.
      *
      * @throws ProducteJaExistent() si el producte a afegir ja existeix.
      *
@@ -60,7 +60,7 @@ class Magatzem {
     /**
      * @brief Elimina un producte de la llista de productes.
      *
-     * @param prod_id id del producte a eliminar.
+     * @param prod_id identificador del producte a eliminar.
      *
      * @throws ProducteNoExistent() si el producte a eliminar no existeix.
      *
@@ -144,8 +144,8 @@ class Magatzem {
      *
      * @post la estanteria de la sala te noves dimensions f*c.
      *
-     * @throws DimensionsInsuficients() si les noves dimensions de l'estanteria no poden contenir
-     * els productes que tenia anteriorment.
+     * @throws DimensionsInsuficients() si les noves dimensions de l'estanteria
+     * no poden contenir els productes que tenia anteriorment.
      *
      * @see Sala#redimensionar
      */
