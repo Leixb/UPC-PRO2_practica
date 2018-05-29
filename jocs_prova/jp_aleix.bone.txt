@@ -1,0 +1,1060 @@
+###########
+# Entrada #
+###########
+
+7
+6 5 0 0 4 1 3 0 0 2 0 0 7 0 0
+3 3
+4 5
+10 4
+1 1
+6 1
+3 1
+5 8
+escribir 1
+escribir 2
+escribir 3
+escribir 4
+escribir 5
+escribir 6
+escribir 7
+inventario
+consultar_prod AAAA
+poner_prod AAAA
+consultar_prod AAAA
+distribuir AAAA 77
+escribir 1
+escribir 2
+escribir 3
+escribir 4
+escribir 5
+escribir 6
+escribir 7
+quitar_prod AAAA
+poner_prod bbBB
+poner_prod CCCC
+inventario
+poner_items 7 bbBB 40
+poner_items 4 bbBB 5
+quitar_items 7 AAAA 10
+quitar_items 5 AAAA 3
+quitar_items 3 AAAA 1
+quitar_items 1 AAAA 57
+distribuir CCCC 30
+escribir 1
+escribir 2
+escribir 3
+escribir 4
+escribir 5
+escribir 6
+escribir 7
+inventario
+redimensionar 5 2 10
+escribir 5
+compactar 7
+escribir 7
+quitar_items 7 bbBB 2
+redimensionar 7 9 4
+escribir 7
+quitar_items 3 AAAA 4
+poner_items 3 bbBB 6
+poner_items 3 AAAA 1
+poner_items 3 CCCC 19
+quitar_items 3 bbBB 3
+quitar_items 3 CCCC 5
+poner_items 3 AAAA 7
+poner_items 3 bbBB 7
+escribir 3
+reorganizar 3
+escribir 3
+consultar_prod bbBB
+consultar_prod BBBB
+consultar_prod AAAA
+consultar_pos 7 3 4
+consultar_pos 2 1 4
+quitar_prod AAAA
+escribir 1
+escribir 2
+escribir 3
+escribir 4
+escribir 5
+escribir 6
+escribir 7
+quitar_items 1 AAAA 1
+quitar_items 2 AAAA 34
+quitar_items 3 AAAA 27
+quitar_items 4 AAAA 10
+quitar_items 5 AAAA 4
+quitar_items 6 AAAA 3
+quitar_items 7 AAAA 18
+escribir 7
+inventario
+quitar_prod AAAA
+inventario
+distribuir AAAA 10
+consultar_prod AAAA
+fin
+
+###########
+# Sortida #
+###########
+
+escribir 1
+  NULL NULL NULL
+  NULL NULL NULL
+  NULL NULL NULL
+  0
+escribir 2
+  NULL NULL NULL NULL NULL
+  NULL NULL NULL NULL NULL
+  NULL NULL NULL NULL NULL
+  NULL NULL NULL NULL NULL
+  0
+escribir 3
+  NULL NULL NULL NULL
+  NULL NULL NULL NULL
+  NULL NULL NULL NULL
+  NULL NULL NULL NULL
+  NULL NULL NULL NULL
+  NULL NULL NULL NULL
+  NULL NULL NULL NULL
+  NULL NULL NULL NULL
+  NULL NULL NULL NULL
+  NULL NULL NULL NULL
+  0
+escribir 4
+  NULL
+  0
+escribir 5
+  NULL
+  NULL
+  NULL
+  NULL
+  NULL
+  NULL
+  0
+escribir 6
+  NULL
+  NULL
+  NULL
+  0
+escribir 7
+  NULL NULL NULL NULL NULL NULL NULL NULL
+  NULL NULL NULL NULL NULL NULL NULL NULL
+  NULL NULL NULL NULL NULL NULL NULL NULL
+  NULL NULL NULL NULL NULL NULL NULL NULL
+  NULL NULL NULL NULL NULL NULL NULL NULL
+  0
+inventario
+consultar_prod AAAA
+  error
+poner_prod AAAA
+consultar_prod AAAA
+  0
+distribuir AAAA 77
+  31
+escribir 1
+  AAAA AAAA AAAA
+  AAAA AAAA AAAA
+  AAAA AAAA AAAA
+  9
+  AAAA 9
+escribir 2
+  NULL NULL NULL NULL NULL
+  NULL NULL NULL NULL NULL
+  NULL NULL NULL NULL NULL
+  AAAA AAAA AAAA AAAA NULL
+  4
+  AAAA 4
+escribir 3
+  NULL NULL NULL NULL
+  NULL NULL NULL NULL
+  NULL NULL NULL NULL
+  NULL NULL NULL NULL
+  NULL NULL NULL NULL
+  NULL NULL NULL NULL
+  NULL NULL NULL NULL
+  NULL NULL NULL NULL
+  AAAA NULL NULL NULL
+  AAAA AAAA AAAA AAAA
+  5
+  AAAA 5
+escribir 4
+  AAAA
+  1
+  AAAA 1
+escribir 5
+  AAAA
+  AAAA
+  AAAA
+  AAAA
+  AAAA
+  AAAA
+  6
+  AAAA 6
+escribir 6
+  AAAA
+  AAAA
+  AAAA
+  3
+  AAAA 3
+escribir 7
+  NULL NULL NULL NULL NULL NULL NULL NULL
+  NULL NULL NULL NULL NULL NULL NULL NULL
+  AAAA AAAA NULL NULL NULL NULL NULL NULL
+  AAAA AAAA AAAA AAAA AAAA AAAA AAAA AAAA
+  AAAA AAAA AAAA AAAA AAAA AAAA AAAA AAAA
+  18
+  AAAA 18
+quitar_prod AAAA
+  error
+poner_prod bbBB
+poner_prod CCCC
+inventario
+  AAAA 46
+  CCCC 0
+  bbBB 0
+poner_items 7 bbBB 40
+  18
+poner_items 4 bbBB 5
+  5
+quitar_items 7 AAAA 10
+  0
+quitar_items 5 AAAA 3
+  0
+quitar_items 3 AAAA 1
+  0
+quitar_items 1 AAAA 57
+  48
+distribuir CCCC 30
+  12
+escribir 1
+  CCCC CCCC NULL
+  CCCC CCCC CCCC
+  CCCC CCCC CCCC
+  8
+  CCCC 8
+escribir 2
+  NULL NULL NULL NULL NULL
+  NULL NULL NULL NULL NULL
+  NULL NULL NULL NULL NULL
+  AAAA AAAA AAAA AAAA NULL
+  4
+  AAAA 4
+escribir 3
+  NULL NULL NULL NULL
+  NULL NULL NULL NULL
+  NULL NULL NULL NULL
+  NULL NULL NULL NULL
+  NULL NULL NULL NULL
+  NULL NULL NULL NULL
+  NULL NULL NULL NULL
+  NULL NULL NULL NULL
+  AAAA NULL NULL NULL
+  NULL AAAA AAAA AAAA
+  4
+  AAAA 4
+escribir 4
+  AAAA
+  1
+  AAAA 1
+escribir 5
+  AAAA
+  AAAA
+  AAAA
+  CCCC
+  CCCC
+  CCCC
+  6
+  AAAA 3
+  CCCC 3
+escribir 6
+  AAAA
+  AAAA
+  AAAA
+  3
+  AAAA 3
+escribir 7
+  bbBB bbBB bbBB bbBB bbBB bbBB bbBB bbBB
+  bbBB bbBB bbBB bbBB bbBB bbBB bbBB bbBB
+  AAAA AAAA bbBB bbBB bbBB bbBB bbBB bbBB
+  NULL NULL AAAA AAAA AAAA AAAA AAAA AAAA
+  CCCC CCCC CCCC CCCC CCCC CCCC CCCC NULL
+  37
+  AAAA 8
+  CCCC 7
+  bbBB 22
+inventario
+  AAAA 23
+  CCCC 18
+  bbBB 22
+redimensionar 5 2 10
+escribir 5
+  NULL NULL NULL NULL NULL NULL NULL NULL NULL NULL
+  CCCC CCCC CCCC AAAA AAAA AAAA NULL NULL NULL NULL
+  6
+  AAAA 3
+  CCCC 3
+compactar 7
+escribir 7
+  bbBB bbBB bbBB bbBB bbBB NULL NULL NULL
+  bbBB bbBB bbBB bbBB bbBB bbBB bbBB bbBB
+  bbBB bbBB bbBB bbBB bbBB bbBB bbBB bbBB
+  AAAA AAAA AAAA AAAA AAAA AAAA AAAA bbBB
+  CCCC CCCC CCCC CCCC CCCC CCCC CCCC AAAA
+  37
+  AAAA 8
+  CCCC 7
+  bbBB 22
+quitar_items 7 bbBB 2
+  0
+redimensionar 7 9 4
+escribir 7
+  bbBB bbBB bbBB NULL
+  bbBB bbBB bbBB bbBB
+  bbBB bbBB bbBB bbBB
+  bbBB bbBB bbBB bbBB
+  bbBB bbBB bbBB bbBB
+  AAAA AAAA AAAA bbBB
+  AAAA AAAA AAAA AAAA
+  CCCC CCCC CCCC AAAA
+  CCCC CCCC CCCC CCCC
+  35
+  AAAA 8
+  CCCC 7
+  bbBB 20
+quitar_items 3 AAAA 4
+  0
+poner_items 3 bbBB 6
+  0
+poner_items 3 AAAA 1
+  0
+poner_items 3 CCCC 19
+  0
+quitar_items 3 bbBB 3
+  0
+quitar_items 3 CCCC 5
+  0
+poner_items 3 AAAA 7
+  0
+poner_items 3 bbBB 7
+  0
+escribir 3
+  NULL NULL NULL NULL
+  NULL NULL NULL NULL
+  bbBB bbBB bbBB bbBB
+  CCCC CCCC bbBB bbBB
+  CCCC CCCC CCCC CCCC
+  CCCC CCCC CCCC CCCC
+  CCCC CCCC CCCC CCCC
+  AAAA AAAA AAAA bbBB
+  bbBB bbBB AAAA AAAA
+  AAAA AAAA AAAA bbBB
+  32
+  AAAA 8
+  CCCC 14
+  bbBB 10
+reorganizar 3
+escribir 3
+  NULL NULL NULL NULL
+  NULL NULL NULL NULL
+  bbBB bbBB bbBB bbBB
+  bbBB bbBB bbBB bbBB
+  CCCC CCCC bbBB bbBB
+  CCCC CCCC CCCC CCCC
+  CCCC CCCC CCCC CCCC
+  CCCC CCCC CCCC CCCC
+  AAAA AAAA AAAA AAAA
+  AAAA AAAA AAAA AAAA
+  32
+  AAAA 8
+  CCCC 14
+  bbBB 10
+consultar_prod bbBB
+  30
+consultar_prod BBBB
+  error
+consultar_prod AAAA
+  27
+consultar_pos 7 3 4
+  bbBB
+consultar_pos 2 1 4
+  NULL
+quitar_prod AAAA
+  error
+escribir 1
+  CCCC CCCC NULL
+  CCCC CCCC CCCC
+  CCCC CCCC CCCC
+  8
+  CCCC 8
+escribir 2
+  NULL NULL NULL NULL NULL
+  NULL NULL NULL NULL NULL
+  NULL NULL NULL NULL NULL
+  AAAA AAAA AAAA AAAA NULL
+  4
+  AAAA 4
+escribir 3
+  NULL NULL NULL NULL
+  NULL NULL NULL NULL
+  bbBB bbBB bbBB bbBB
+  bbBB bbBB bbBB bbBB
+  CCCC CCCC bbBB bbBB
+  CCCC CCCC CCCC CCCC
+  CCCC CCCC CCCC CCCC
+  CCCC CCCC CCCC CCCC
+  AAAA AAAA AAAA AAAA
+  AAAA AAAA AAAA AAAA
+  32
+  AAAA 8
+  CCCC 14
+  bbBB 10
+escribir 4
+  AAAA
+  1
+  AAAA 1
+escribir 5
+  NULL NULL NULL NULL NULL NULL NULL NULL NULL NULL
+  CCCC CCCC CCCC AAAA AAAA AAAA NULL NULL NULL NULL
+  6
+  AAAA 3
+  CCCC 3
+escribir 6
+  AAAA
+  AAAA
+  AAAA
+  3
+  AAAA 3
+escribir 7
+  bbBB bbBB bbBB NULL
+  bbBB bbBB bbBB bbBB
+  bbBB bbBB bbBB bbBB
+  bbBB bbBB bbBB bbBB
+  bbBB bbBB bbBB bbBB
+  AAAA AAAA AAAA bbBB
+  AAAA AAAA AAAA AAAA
+  CCCC CCCC CCCC AAAA
+  CCCC CCCC CCCC CCCC
+  35
+  AAAA 8
+  CCCC 7
+  bbBB 20
+quitar_items 1 AAAA 1
+  1
+quitar_items 2 AAAA 34
+  30
+quitar_items 3 AAAA 27
+  19
+quitar_items 4 AAAA 10
+  9
+quitar_items 5 AAAA 4
+  1
+quitar_items 6 AAAA 3
+  0
+quitar_items 7 AAAA 18
+  10
+escribir 7
+  bbBB bbBB bbBB NULL
+  bbBB bbBB bbBB bbBB
+  bbBB bbBB bbBB bbBB
+  bbBB bbBB bbBB bbBB
+  bbBB bbBB bbBB bbBB
+  NULL NULL NULL bbBB
+  NULL NULL NULL NULL
+  CCCC CCCC CCCC NULL
+  CCCC CCCC CCCC CCCC
+  27
+  CCCC 7
+  bbBB 20
+inventario
+  AAAA 0
+  CCCC 32
+  bbBB 30
+quitar_prod AAAA
+inventario
+  CCCC 32
+  bbBB 30
+distribuir AAAA 10
+  error
+consultar_prod AAAA
+  error
+fin
+
+#####################
+# Entrada comentada #
+#####################
+
+# Creem 7 sales
+7
+
+# Generem l'arbre
+6 5 0 0 4 1 3 0 0 2 0 0 7 0 0
+
+# Sales de dimensions varies
+3 3
+4 5
+10 4
+1 1
+6 1
+3 1
+5 8
+
+# Comprovem que les sales estan buides i tenen les dimensions correctes
+escribir 1
+escribir 2
+escribir 3
+escribir 4
+escribir 5
+escribir 6
+escribir 7
+
+# L'inventari ha d'estar buit
+inventario
+
+# Comprovar que poner_prod i consultar_prod funcionen
+consultar_prod AAAA
+poner_prod AAAA
+consultar_prod AAAA
+
+# Distribuim unitats per veure si es reparteixen seguint l'arbre
+distribuir AAAA 77
+escribir 1
+escribir 2
+escribir 3
+escribir 4
+escribir 5
+escribir 6
+escribir 7
+
+# Hauria de fallar ja que encara hi ha unitats al magatzem
+quitar_prod AAAA
+
+# Afegim dos productes mes per provar com es gestionen els forats
+poner_prod bbBB
+poner_prod CCCC
+
+inventario
+poner_items 7 bbBB 40
+poner_items 4 bbBB 5
+
+# Treiem AAAA per generar forats a diverses sales
+quitar_items 7 AAAA 10
+quitar_items 5 AAAA 3
+quitar_items 3 AAAA 1
+quitar_items 1 AAAA 57
+
+# Distribuim CCCC, hauria d'omplir els forats en l'ordre adient
+distribuir CCCC 30
+
+# Comprovem el contingut de les sales
+escribir 1
+escribir 2
+escribir 3
+escribir 4
+escribir 5
+escribir 6
+escribir 7
+
+# Comprovem que inventario mante el recompte correcte
+inventario
+
+# Prova de l'operació redimensionar
+redimensionar 5 2 10
+escribir 5
+
+# Prova de compactar
+compactar 7
+escribir 7
+
+# generem un forat i redimensionem de nou
+quitar_items 7 bbBB 2
+redimensionar 7 9 4
+escribir 7
+
+# Comprovar que quitar_items i poner_items funcionen
+quitar_items 3 AAAA 4
+poner_items 3 bbBB 6
+poner_items 3 AAAA 1
+poner_items 3 CCCC 19
+quitar_items 3 bbBB 3
+quitar_items 3 CCCC 5
+poner_items 3 AAAA 7
+poner_items 3 bbBB 7
+escribir 3
+
+reorganizar 3
+escribir 3
+
+# Prova de consultar_prod
+consultar_prod bbBB
+
+# BBBB no ha d'existir (les majuscules afecten)
+consultar_prod BBBB
+consultar_prod AAAA
+
+# Prova de consultar_pos
+consultar_pos 7 3 4
+consultar_pos 2 1 4
+
+# Ha de fallar (encara hi ha items)
+quitar_prod AAAA
+
+escribir 1
+escribir 2
+escribir 3
+escribir 4
+escribir 5
+escribir 6
+escribir 7
+
+# Traiem tots els AAAA de l'inventari
+quitar_items 1 AAAA 1
+quitar_items 2 AAAA 34
+quitar_items 3 AAAA 27
+quitar_items 4 AAAA 10
+quitar_items 5 AAAA 4
+quitar_items 6 AAAA 3
+quitar_items 7 AAAA 18
+
+escribir 7
+inventario
+
+# Ara no queden items de AAAA, s'ha de poder eliminar
+quitar_prod AAAA
+
+inventario
+
+# AAAA ja no existeix, error
+distribuir AAAA 10
+consultar_prod AAAA
+
+# fi de l'entrada
+fin
+
+#####################
+# Sortida comentada #
+#####################
+
+# Les estanteries estan buides despres d'inicialitzar el magatzem:
+
+escribir 1
+  NULL NULL NULL
+  NULL NULL NULL
+  NULL NULL NULL
+  0
+escribir 2
+  NULL NULL NULL NULL NULL
+  NULL NULL NULL NULL NULL
+  NULL NULL NULL NULL NULL
+  NULL NULL NULL NULL NULL
+  0
+escribir 3
+  NULL NULL NULL NULL
+  NULL NULL NULL NULL
+  NULL NULL NULL NULL
+  NULL NULL NULL NULL
+  NULL NULL NULL NULL
+  NULL NULL NULL NULL
+  NULL NULL NULL NULL
+  NULL NULL NULL NULL
+  NULL NULL NULL NULL
+  NULL NULL NULL NULL
+  0
+escribir 4
+  NULL
+  0
+escribir 5
+  NULL
+  NULL
+  NULL
+  NULL
+  NULL
+  NULL
+  0
+escribir 6
+  NULL
+  NULL
+  NULL
+  0
+escribir 7
+  NULL NULL NULL NULL NULL NULL NULL NULL
+  NULL NULL NULL NULL NULL NULL NULL NULL
+  NULL NULL NULL NULL NULL NULL NULL NULL
+  NULL NULL NULL NULL NULL NULL NULL NULL
+  NULL NULL NULL NULL NULL NULL NULL NULL
+  0
+
+# L'inventari també ñes buit
+inventario
+
+# El producte no existeix
+consultar_prod AAAA
+  error
+
+# Despres de poner_prod AAAA té 0 unitats
+poner_prod AAAA
+consultar_prod AAAA
+  0
+
+# Mirem el contingut de les estanteries despres de distribuir
+
+distribuir AAAA 77
+  31
+escribir 1
+  AAAA AAAA AAAA
+  AAAA AAAA AAAA
+  AAAA AAAA AAAA
+  9
+  AAAA 9
+escribir 2
+  NULL NULL NULL NULL NULL
+  NULL NULL NULL NULL NULL
+  NULL NULL NULL NULL NULL
+  AAAA AAAA AAAA AAAA NULL
+  4
+  AAAA 4
+escribir 3
+  NULL NULL NULL NULL
+  NULL NULL NULL NULL
+  NULL NULL NULL NULL
+  NULL NULL NULL NULL
+  NULL NULL NULL NULL
+  NULL NULL NULL NULL
+  NULL NULL NULL NULL
+  NULL NULL NULL NULL
+  AAAA NULL NULL NULL
+  AAAA AAAA AAAA AAAA
+  5
+  AAAA 5
+escribir 4
+  AAAA
+  1
+  AAAA 1
+escribir 5
+  AAAA
+  AAAA
+  AAAA
+  AAAA
+  AAAA
+  AAAA
+  6
+  AAAA 6
+escribir 6
+  AAAA
+  AAAA
+  AAAA
+  3
+  AAAA 3
+escribir 7
+  NULL NULL NULL NULL NULL NULL NULL NULL
+  NULL NULL NULL NULL NULL NULL NULL NULL
+  AAAA AAAA NULL NULL NULL NULL NULL NULL
+  AAAA AAAA AAAA AAAA AAAA AAAA AAAA AAAA
+  AAAA AAAA AAAA AAAA AAAA AAAA AAAA AAAA
+  18
+  AAAA 18
+
+# No es pot treure AAAA ja que encara hi ha unitats al magatzem
+quitar_prod AAAA
+  error
+
+poner_prod bbBB
+poner_prod CCCC
+
+# S'han afegit els nous productes
+inventario
+  AAAA 46
+  CCCC 0
+  bbBB 0
+
+poner_items 7 bbBB 40
+  18
+poner_items 4 bbBB 5
+  5
+quitar_items 7 AAAA 10
+  0
+quitar_items 5 AAAA 3
+  0
+quitar_items 3 AAAA 1
+  0
+
+# han sobrat 48 elements a la sala 1 es coherent amb l'inventari de la sala que
+# hem vist abans
+quitar_items 1 AAAA 57
+  48
+
+distribuir CCCC 30
+  12
+
+# Comprovem que els forats s'han omplert adequadament
+escribir 1
+  CCCC CCCC NULL
+  CCCC CCCC CCCC
+  CCCC CCCC CCCC
+  8
+  CCCC 8
+escribir 2
+  NULL NULL NULL NULL NULL
+  NULL NULL NULL NULL NULL
+  NULL NULL NULL NULL NULL
+  AAAA AAAA AAAA AAAA NULL
+  4
+  AAAA 4
+escribir 3
+  NULL NULL NULL NULL
+  NULL NULL NULL NULL
+  NULL NULL NULL NULL
+  NULL NULL NULL NULL
+  NULL NULL NULL NULL
+  NULL NULL NULL NULL
+  NULL NULL NULL NULL
+  NULL NULL NULL NULL
+  AAAA NULL NULL NULL
+  NULL AAAA AAAA AAAA
+  4
+  AAAA 4
+escribir 4
+  AAAA
+  1
+  AAAA 1
+escribir 5
+  AAAA
+  AAAA
+  AAAA
+  CCCC
+  CCCC
+  CCCC
+  6
+  AAAA 3
+  CCCC 3
+escribir 6
+  AAAA
+  AAAA
+  AAAA
+  3
+  AAAA 3
+escribir 7
+  bbBB bbBB bbBB bbBB bbBB bbBB bbBB bbBB
+  bbBB bbBB bbBB bbBB bbBB bbBB bbBB bbBB
+  AAAA AAAA bbBB bbBB bbBB bbBB bbBB bbBB
+  NULL NULL AAAA AAAA AAAA AAAA AAAA AAAA
+  CCCC CCCC CCCC CCCC CCCC CCCC CCCC NULL
+  37
+  AAAA 8
+  CCCC 7
+  bbBB 22
+inventario
+  AAAA 23
+  CCCC 18
+  bbBB 22
+
+# Redimensionar compacta correctament
+redimensionar 5 2 10
+escribir 5
+  NULL NULL NULL NULL NULL NULL NULL NULL NULL NULL
+  CCCC CCCC CCCC AAAA AAAA AAAA NULL NULL NULL NULL
+  6
+  AAAA 3
+  CCCC 3
+compactar 7
+escribir 7
+  bbBB bbBB bbBB bbBB bbBB NULL NULL NULL
+  bbBB bbBB bbBB bbBB bbBB bbBB bbBB bbBB
+  bbBB bbBB bbBB bbBB bbBB bbBB bbBB bbBB
+  AAAA AAAA AAAA AAAA AAAA AAAA AAAA bbBB
+  CCCC CCCC CCCC CCCC CCCC CCCC CCCC AAAA
+  37
+  AAAA 8
+  CCCC 7
+  bbBB 22
+quitar_items 7 bbBB 2
+  0
+redimensionar 7 9 4
+escribir 7
+  bbBB bbBB bbBB NULL
+  bbBB bbBB bbBB bbBB
+  bbBB bbBB bbBB bbBB
+  bbBB bbBB bbBB bbBB
+  bbBB bbBB bbBB bbBB
+  AAAA AAAA AAAA bbBB
+  AAAA AAAA AAAA AAAA
+  CCCC CCCC CCCC AAAA
+  CCCC CCCC CCCC CCCC
+  35
+  AAAA 8
+  CCCC 7
+  bbBB 20
+quitar_items 3 AAAA 4
+  0
+poner_items 3 bbBB 6
+  0
+poner_items 3 AAAA 1
+  0
+poner_items 3 CCCC 19
+  0
+quitar_items 3 bbBB 3
+  0
+quitar_items 3 CCCC 5
+  0
+poner_items 3 AAAA 7
+  0
+poner_items 3 bbBB 7
+  0
+escribir 3
+  NULL NULL NULL NULL
+  NULL NULL NULL NULL
+  bbBB bbBB bbBB bbBB
+  CCCC CCCC bbBB bbBB
+  CCCC CCCC CCCC CCCC
+  CCCC CCCC CCCC CCCC
+  CCCC CCCC CCCC CCCC
+  AAAA AAAA AAAA bbBB
+  bbBB bbBB AAAA AAAA
+  AAAA AAAA AAAA bbBB
+  32
+  AAAA 8
+  CCCC 14
+  bbBB 10
+
+# bbBB ha omplert els forats de l'estanteria correctament
+
+reorganizar 3
+escribir 3
+  NULL NULL NULL NULL
+  NULL NULL NULL NULL
+  bbBB bbBB bbBB bbBB
+  bbBB bbBB bbBB bbBB
+  CCCC CCCC bbBB bbBB
+  CCCC CCCC CCCC CCCC
+  CCCC CCCC CCCC CCCC
+  CCCC CCCC CCCC CCCC
+  AAAA AAAA AAAA AAAA
+  AAAA AAAA AAAA AAAA
+  32
+  AAAA 8
+  CCCC 14
+  bbBB 10
+
+# l'estanteria esta ordenada
+
+consultar_prod bbBB
+  30
+consultar_prod BBBB
+  error
+# BBbb existeix, BBBB no
+
+consultar_prod AAAA
+  27
+consultar_pos 7 3 4
+  bbBB
+consultar_pos 2 1 4
+  NULL
+
+# Efecitvament no es pot eliminar
+quitar_prod AAAA
+  error
+escribir 1
+  CCCC CCCC NULL
+  CCCC CCCC CCCC
+  CCCC CCCC CCCC
+  8
+  CCCC 8
+escribir 2
+  NULL NULL NULL NULL NULL
+  NULL NULL NULL NULL NULL
+  NULL NULL NULL NULL NULL
+  AAAA AAAA AAAA AAAA NULL
+  4
+  AAAA 4
+escribir 3
+  NULL NULL NULL NULL
+  NULL NULL NULL NULL
+  bbBB bbBB bbBB bbBB
+  bbBB bbBB bbBB bbBB
+  CCCC CCCC bbBB bbBB
+  CCCC CCCC CCCC CCCC
+  CCCC CCCC CCCC CCCC
+  CCCC CCCC CCCC CCCC
+  AAAA AAAA AAAA AAAA
+  AAAA AAAA AAAA AAAA
+  32
+  AAAA 8
+  CCCC 14
+  bbBB 10
+escribir 4
+  AAAA
+  1
+  AAAA 1
+escribir 5
+  NULL NULL NULL NULL NULL NULL NULL NULL NULL NULL
+  CCCC CCCC CCCC AAAA AAAA AAAA NULL NULL NULL NULL
+  6
+  AAAA 3
+  CCCC 3
+escribir 6
+  AAAA
+  AAAA
+  AAAA
+  3
+  AAAA 3
+escribir 7
+  bbBB bbBB bbBB NULL
+  bbBB bbBB bbBB bbBB
+  bbBB bbBB bbBB bbBB
+  bbBB bbBB bbBB bbBB
+  bbBB bbBB bbBB bbBB
+  AAAA AAAA AAAA bbBB
+  AAAA AAAA AAAA AAAA
+  CCCC CCCC CCCC AAAA
+  CCCC CCCC CCCC CCCC
+  35
+  AAAA 8
+  CCCC 7
+  bbBB 20
+quitar_items 1 AAAA 1
+  1
+quitar_items 2 AAAA 34
+  30
+quitar_items 3 AAAA 27
+  19
+quitar_items 4 AAAA 10
+  9
+quitar_items 5 AAAA 4
+  1
+quitar_items 6 AAAA 3
+  0
+quitar_items 7 AAAA 18
+  10
+escribir 7
+  bbBB bbBB bbBB NULL
+  bbBB bbBB bbBB bbBB
+  bbBB bbBB bbBB bbBB
+  bbBB bbBB bbBB bbBB
+  bbBB bbBB bbBB bbBB
+  NULL NULL NULL bbBB
+  NULL NULL NULL NULL
+  CCCC CCCC CCCC NULL
+  CCCC CCCC CCCC CCCC
+  27
+  CCCC 7
+  bbBB 20
+inventario
+  AAAA 0
+  CCCC 32
+  bbBB 30
+
+# S'elimina correctament (ja no queden items)
+quitar_prod AAAA
+
+# L'inventari mostra els productes restants (AAAA no està a la llista)
+inventario
+  CCCC 32
+  bbBB 30
+
+# Error ja que AAAA s'ha eliminat
+distribuir AAAA 10
+  error
+consultar_prod AAAA
+  error
+fin
